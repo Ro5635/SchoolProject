@@ -1,0 +1,16 @@
+c:\users\robert\documents\visual studio 2013\Projects\FileIO\FileIO\bin\Debug\FileIO.exe.config
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\bin\Debug\FileIO.exe
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\bin\Debug\FileIO.pdb
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.csprojResolveAssemblyReference.cache
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.Form1.resources
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.Properties.Resources.resources
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.csproj.GenerateResource.Cache
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.exe
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.pdb
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\bin\Debug\VariblesID.txt
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.TestForm2.resources
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.SplashScreen.resources
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\bin\Debug\FileIO.exe.manifest
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\bin\Debug\FileIO.application
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.exe.manifest
+C:\Users\Robert\Documents\Visual Studio 2013\Projects\FileIO\FileIO\obj\Debug\FileIO.application

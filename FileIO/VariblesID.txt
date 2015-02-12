@@ -1,0 +1,5 @@
+﻿1^Age^Int
+2^Name^String
+3^SName^String
+4^FavNum^Int
+5^DOBMonth^Int

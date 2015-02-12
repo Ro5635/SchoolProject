@@ -1,0 +1,96 @@
+Test2
+Test2
+Test2
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+Hello this is appnded from form 1
+BLA BLA BLA
+BLA BLA BLA
+All Errors in the sytsem are documented bellow:
+Log Files and Eror Files Created
+Robert wrote this
+roberrt wrote this 2 
+Test from software
+Test from software
+All ports scanned.
+All ports scanned.
+All ports scanned.
+All ports scanned.
+All ports scanned.
+All ports scanned.
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6#COM3 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports: COM6#COM3 avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
