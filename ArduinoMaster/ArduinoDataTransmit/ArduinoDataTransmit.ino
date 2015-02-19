@@ -73,12 +73,18 @@ void serialEvent(){
 
       if(recivedtring == "Robot?"){
         //Start Up Communication from Program
-        Serial.println("Arduino_Robot");
+        Serial.println("^Arduino_Robot^");
         Serial.println("Entering PC Access Mode");
         PCAccessMode = true;
         } 
 
     }
+    
+    
+
+void  runTimeCommunication(){
+ }
+ 
 
     void PCAccessCommunication(){
         
@@ -86,42 +92,10 @@ void serialEvent(){
 
     }
 
-    void syncCommunication(){
-    //This is used to compleate a 3 way handshake before data transmit.
-
-      Serial.println("sync"); //Ask for sync
-
-      while(!syncSuccess) {
-          
-          serialEvent();
-
-          if (syncInProgress){
-
-          if (dataRecived == "syncAwk"){
-              syncSuccess = true;
-           }
-
-
-           } else {
-              //Start sync
-              syncSuccess = false;
-
-
-          }
-
-          if (recivedtring == "syncAwk" && syncTest){
-              syncSuccess; //Both points are listining, transmit ready.
-          }
-
-
-
-      }
+  
 
 
     
-
-
-    }
 
 
 

@@ -114,14 +114,14 @@ namespace FileIO
         #endregion Serial Port Write
 
         #region Serial Port Read
-        //execute read and then check the recived data
+        //execute read and then check the recived data, this will use the read raw serial data routine for the mechanics of aquiring the data. 
         public string ReadSerialData()
         {
             //read raw data
-            string RawData = ReadSerialDataRaw();
-
+            String RawData = ReadSerialDataRaw();
+            String TrimmedData = RawData.Trim(new Char[] { '^', '\r' });
             //check the data
-            return "incompleate";
+            return TrimmedData;// this is the raw data with the enclosing ^ and new line charactors removed.
         }
         
         
@@ -179,9 +179,11 @@ namespace FileIO
 
 
             string[] PortsAvalableArray = SerialPortsActive.Split('#');
-            byte CirtifiedPortIDNum = 0;
+           
 
             GlobalVar GlobalsAccessHandle = new GlobalVar ();
+
+            int FoundPortsArrayLocation = 0;
 
             foreach (string port in PortsAvalableArray)
             {
@@ -200,12 +202,13 @@ namespace FileIO
                         Thread.Sleep(1000); // nasty sleep delay, this actualy stops entire thread execution (this thread only, Splash GUI is in seperate thread)
 
                         string DataIn = ReadSerialDataRaw();
-                        if (DataIn == "Arduino_Robot")
+                        if (DataIn == "^Arduino_Robot^\r")
                         {
                             ProgramFiles.WriteLogFile("SUCCESS FOUND A Robot " + port.ToString() + "  " + BaudScan );
-                            GlobalsAccessHandle.SerialPortsActiveRobotsSetValue(0,1,"Test"); 
-                            //CirtifiedPortIDNum
-
+                            GlobalsAccessHandle.SerialPortsActiveRobotsSetValue(FoundPortsArrayLocation, 0 ,port.ToString() );
+                            GlobalsAccessHandle.SerialPortsActiveRobotsSetValue(FoundPortsArrayLocation, 1, BaudScan.ToString());
+                            FoundPortsArrayLocation++;
+                            Console.WriteLine("Success Arduino found: " + BaudScan + " " + port.ToString() + "   " +  DataIn.ToString());
                         }
                         CloseSerialPort();
 

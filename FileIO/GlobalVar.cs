@@ -19,7 +19,7 @@ namespace FileIO
         string SNameData = Properties.Settings.Default.SName;
 
         string SerialPortsOpenData = Properties.Settings.Default.SerialPortsOpenData;
-        string[,] SerialPortsActiveRobotsData = new string[10,3];//= Properties.Settings.Default.SerialPortsActiveRobotsData;
+        string[,] SerialPortsActiveRobotsData = new string[100, 2];//= Properties.Settings.Default.SerialPortsActiveRobotsData;
 
         int FavNumData;
         int DOBMonthData;
@@ -33,14 +33,14 @@ namespace FileIO
             set { SerialPortsOpenData = value; }
         }
 
-        public string SerialPortsActiveRobots(int X,int Y)
+        public string SerialPortsActiveRobots(int X, int DataID)
         {
-              return SerialPortsActiveRobotsData[X,Y]; 
+              return SerialPortsActiveRobotsData[X, DataID]; 
         }
 
-        public void SerialPortsActiveRobotsSetValue(int X, int Y, string value)
+        public void SerialPortsActiveRobotsSetValue(int X, int DataID ,string value)
         {
-             SerialPortsActiveRobotsData[X, Y] = value;
+             SerialPortsActiveRobotsData[X, DataID] = value;
         }
 
         //End Non User Dependent, System Defined

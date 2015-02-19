@@ -120,7 +120,7 @@ namespace FileIO
                 using (System.IO.StreamWriter LogFileStream = new System.IO.StreamWriter((FileFullPath + FIleExtension), true))
                 {
                     LogFileStream.WriteLine(StringToWrite);
-
+                    LogFileStream.Flush();
 
                 }
 

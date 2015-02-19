@@ -16,8 +16,8 @@ namespace FileIO
         {
             MessageBox.Show("Notice to User, This Program is in Development. I bear no responsablility for premature death as a result of using this software be that human or machine", "Extreme Warning");
 
-            TestClass Tests = new TestClass();
-            Tests.TestFunctions();
+            
+          
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
