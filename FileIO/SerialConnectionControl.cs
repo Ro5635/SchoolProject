@@ -22,6 +22,8 @@ namespace FileIO
             string[] DataSplit = DataPacket.Split('$');
             if (CheckCheckSum(DataSplit))//Do the following only if cheack sum is correct.
                 {
+                    //Awk Successful recepit of uncurupted data
+                    //SendAWK();
                     string[] ReturnPackage = {DataSplit[0],DataSplit[1]};
                     return ReturnPackage;
                 }
@@ -31,6 +33,14 @@ namespace FileIO
                 string[] fail = {"",""};
                 return fail ;  
             }
+        }
+
+        private void SendSuccessfulReceiveAwk(string ID)
+        {
+            //Reply "I got That, dont send again"...
+            // 111 is the Awk ID
+            SerialControl SerialHandler = new SerialControl();
+            SerialHandler.WriteSerialData("111$" + ID);
         }
 
         private Boolean CheckCheckSum(string[] Packet ){
@@ -50,7 +60,7 @@ namespace FileIO
 
         #region Transmit Data
         
-        void
+        
 
 
         #endregion Transmit data

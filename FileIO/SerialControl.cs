@@ -101,7 +101,7 @@ namespace FileIO
         {
             try
             {
-                NewSerialPort.WriteLine(WriteThis + "^");
+                NewSerialPort.WriteLine("^" + WriteThis + "^");
             }
             catch (Exception ErrorText)
             {
