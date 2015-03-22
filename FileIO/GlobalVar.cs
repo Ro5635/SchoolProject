@@ -21,11 +21,32 @@ namespace FileIO
         string SerialPortsOpenData = Properties.Settings.Default.SerialPortsOpenData;
         string[,] SerialPortsActiveRobotsData = new string[100, 2];//= Properties.Settings.Default.SerialPortsActiveRobotsData;
 
+        //Primary Serial Port
+        string PrimarySerialPortNameData = Properties.Settings.Default.PrimarySerialPortName;
+        int PrimarySerialPortBaudData = Properties.Settings.Default.PrimaySerialPortBaud;
+
+
         int FavNumData;
         int DOBMonthData;
 
 
-        // Non User Dependent, System Defined
+        // Non User Dependent, System Defined ----------------
+
+        //Primary Serial:
+        public string PrimarySerialPortName
+        {
+            get { return Properties.Settings.Default.PrimarySerialPortName;  }
+            set { Properties.Settings.Default.PrimarySerialPortName = value; }
+        }
+
+        public int PrimarySerialPortBaud
+        {
+            get { return Properties.Settings.Default.PrimaySerialPortBaud; }
+            set { Properties.Settings.Default.PrimaySerialPortBaud = value; }
+        }
+
+        //End Primary Serial
+
 
         public string SerialPortsOpen
         {
@@ -43,7 +64,7 @@ namespace FileIO
              SerialPortsActiveRobotsData[X, DataID] = value;
         }
 
-        //End Non User Dependent, System Defined
+        //End Non User Dependent, System Defined ----------------
 
         public static string FolderName
         {

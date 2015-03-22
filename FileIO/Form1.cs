@@ -26,7 +26,22 @@ namespace FileIO
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //LogErrorHandle.InitialiseFiles("FormA");
            // MessageBox.Show(Properties.Settings.Default.RunID.ToString());
 
@@ -127,6 +142,32 @@ namespace FileIO
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            GlobalVar GLobals = new GlobalVar();
+            
+            Console.WriteLine("Break ");
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+
+            SerialConnectionControl SerialConn = new SerialConnectionControl();
+
+            String[] PacketRecived = SerialConn.ReadData();
+            label2.Text = PacketRecived[0];
+            label3.Text = PacketRecived[1];
 
         }
 

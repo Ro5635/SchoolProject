@@ -35,7 +35,7 @@ namespace FileIO
             ProgramFiles.WriteLogFile("Files Created Succesfuly");
 
             // increment the proccess bar by one. 
-            LoadProgressBar.Increment(1);
+            //LoadProgressBar.Increment(1);
 
             //Initilise the serial handler
 
@@ -51,7 +51,8 @@ namespace FileIO
                 int NumberOfPorts = SerialPortsActive.Split('#').Length;
                 //calculate number of scans neccasary
                 int ScansRequired = NumberOfPorts * 9;
-                LoadProgressBar.Maximum = ScansRequired;
+                LoadProgressBar.Maximum = ScansRequired + 1;
+            //The Reason for the plus one is a work around to allow serial scan to finish before being closed, saves having to add a close condition.
 
                 
 

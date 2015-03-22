@@ -13,6 +13,7 @@ namespace FileIO
     class SerialConnectionControl
     {
         SerialControl SerialDataHandle = new SerialControl();
+        
         #region ReadData
         //Read data
         public string[] ReadData()
@@ -46,12 +47,18 @@ namespace FileIO
 
         private Boolean CheckCheckSum(string[] Packet ){
             //This Function Cheaks the check sum in the data packet
-            if (Convert.ToInt32(Packet[2]) == (Convert.ToInt32(Packet[0]) * 2) + Convert.ToInt32(Packet[1].Length))
-            { //note chars are only counted not unicode ie o6tw = len 3
-                return true;
-            }
-            else
+            try
             {
+                if (Convert.ToInt32(Packet[2]) == (Convert.ToInt32(Packet[0]) * 2) + Convert.ToInt32(Packet[1].Length))
+                { //note chars are only counted not unicode ie o6tw = len 3
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            } //End Try
+            catch {
                 return false;
             }
         }

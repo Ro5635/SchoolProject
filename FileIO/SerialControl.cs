@@ -118,6 +118,10 @@ namespace FileIO
         public string ReadSerialData()
         {
             //read raw data
+            //Open the primary Serial Port (the first port that was found, this will often be the only one.)
+            GlobalVar GlobalsAccessHandle = new GlobalVar ();
+            OpenSerialPort(GlobalsAccessHandle.SerialPortsActiveRobots(0, 0), Convert.ToInt32(GlobalsAccessHandle.SerialPortsActiveRobots(0, 1))); //Get the Baud and port name from Global vars
+            Console.WriteLine("Data From the Global Vars: " + GlobalsAccessHandle.SerialPortsActiveRobots(0, 0) + " : " +  Convert.ToInt32(GlobalsAccessHandle.SerialPortsActiveRobots(0, 1)));
             String RawData = ReadSerialDataRaw();
             String TrimmedData = RawData.Trim(new Char[] { '^', '\r' });
             //check the data
@@ -207,8 +211,16 @@ namespace FileIO
                             ProgramFiles.WriteLogFile("SUCCESS FOUND A Robot " + port.ToString() + "  " + BaudScan );
                             GlobalsAccessHandle.SerialPortsActiveRobotsSetValue(FoundPortsArrayLocation, 0 ,port.ToString() );
                             GlobalsAccessHandle.SerialPortsActiveRobotsSetValue(FoundPortsArrayLocation, 1, BaudScan.ToString());
+                            //If it is the first Serial port foud save it to the primary serial, this is saved for the length of the program session.
+                            if (FoundPortsArrayLocation == 0)
+                            {
+                                GlobalsAccessHandle.PrimarySerialPortBaud = BaudScan;
+                                GlobalsAccessHandle.PrimarySerialPortName =  port.ToString();
+                            }
                             FoundPortsArrayLocation++;
                             Console.WriteLine("Success Arduino found: " + BaudScan + " " + port.ToString() + "   " +  DataIn.ToString());
+                            Console.WriteLine("Data from GlobalVars: " + GlobalsAccessHandle.SerialPortsActiveRobots(0, 0) + " 2: " + GlobalsAccessHandle.SerialPortsActiveRobots(0,1));
+                            
                         }
                         CloseSerialPort();
 
@@ -221,7 +233,9 @@ namespace FileIO
                 }
 
                 ProgramFiles.WriteLogFile("All ports scanned.");
-
+                Console.WriteLine("All ports scanned. " + "The Primary Serial Port is: " + GlobalsAccessHandle.PrimarySerialPortName + " Baud: " + GlobalsAccessHandle.PrimarySerialPortBaud);
+                //Now start chain of events to close the splash screen.
+                Properties.Settings.Default.PortsScanned = Properties.Settings.Default.PortsScanned + 1;
             }
         }//End find serial robot
         #endregion Find Serial Robot
