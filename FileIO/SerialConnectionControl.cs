@@ -13,11 +13,23 @@ namespace FileIO
     class SerialConnectionControl
     {
         SerialControl SerialDataHandle = new SerialControl();
-        
+        GlobalVar GlobalsAccessHandle = new GlobalVar();
+        Boolean initialised = false;
+
+        public void initialise(){
+            //Open the primary Serial Port (the first port that was found, this will often be the only one.)
+            SerialDataHandle.OpenSerialPort(GlobalsAccessHandle.PrimarySerialPortName, GlobalsAccessHandle.PrimarySerialPortBaud); //Get the Baud and port name from Global vars, Use the primary.
+            initialised = true;
+        }
+
         #region ReadData
         //Read data
         public string[] ReadData()
         {
+            if (initialised == false)
+            {
+                initialise();
+            }
             String DataPacket =  SerialDataHandle.ReadSerialData(); //get the Data from the serial controler.
             //Split the data:
             string[] DataSplit = DataPacket.Split('$');

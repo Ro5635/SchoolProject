@@ -49,5 +49,22 @@ namespace FileIO
         {
 
         }
+        GlobalVar GLobalsAccess = new GlobalVar();
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GLobalsAccess.PrimarySerialPortName = "Apple";
+            label3.Text = GLobalsAccess.PrimarySerialPortName;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GLobalsAccess.PrimarySerialPortName = "Pineapples";
+            label3.Text = GLobalsAccess.PrimarySerialPortName;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            label3.Text = GLobalsAccess.PrimarySerialPortName;
+        }
     }
 }

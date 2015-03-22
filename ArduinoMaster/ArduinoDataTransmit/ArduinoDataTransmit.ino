@@ -23,7 +23,7 @@ void loop() {
 if (PCAccessMode){
 //PC Access Mode Enabled, 
 
-
+delay(1000);
   Serial.println("^66$56356$136^");
 
 }else {

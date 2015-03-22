@@ -14,8 +14,7 @@ namespace FileIO
     {
         
         LogAndErrorFiles LogErrorHandle = new LogAndErrorFiles();
-        SerialControl SerialPortA = new SerialControl();
-        SerialControl SerialPortB = new SerialControl();
+ 
 
         public Form1()
         {
@@ -45,7 +44,6 @@ namespace FileIO
             //LogErrorHandle.InitialiseFiles("FormA");
            // MessageBox.Show(Properties.Settings.Default.RunID.ToString());
 
-            SerialPortA.OpenSerialPort("COM6", 115200);
            // SerialPortB.OpenSerialPort("COM4", 9600);
             
             
@@ -55,19 +53,7 @@ namespace FileIO
            //MessageBox.Show(test.FolderName.ToString());
            //test.FolderName = "hi";
 
-            
-            
-            string FreePorts = SerialPortA.SerialPortScan();
-            string[] FreeportsArray = FreePorts.Split('#');
-            foreach (string x in FreeportsArray)
-            {
-                comboBox1.Items.Add(x);
-            }
-
-            
-
-            
-
+      
 
 
         }
@@ -111,7 +97,7 @@ namespace FileIO
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SerialPortA.WriteSerialData(richTextBox3.Text.ToString());
+
             
         }
 
@@ -169,6 +155,32 @@ namespace FileIO
             label2.Text = PacketRecived[0];
             label3.Text = PacketRecived[1];
 
+        }
+
+        GlobalVar GLobalsAccess = new GlobalVar();
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            GLobalsAccess.PrimarySerialPortName = "Chease";
+            label4.Text = GLobalsAccess.PrimarySerialPortName;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            GLobalsAccess.PrimarySerialPortName = "Apple";
+            label4.Text = GLobalsAccess.PrimarySerialPortName;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            label4.Text = GLobalsAccess.PrimarySerialPortName;
+        }
+
+        SerialControl SerialTest = new SerialControl();
+        private void button10_Click(object sender, EventArgs e)
+        {
+            SerialTest.OpenSerialPort("COM6", 9600);
+            textBox2.Text = SerialTest.ReadSerialData();
         }
 
     

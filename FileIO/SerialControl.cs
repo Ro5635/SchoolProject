@@ -60,6 +60,7 @@ namespace FileIO
         {
                 try
                 {
+                    CloseSerialPort();
                     NewSerialPort =  new System.IO.Ports.SerialPort()
                     {
                         PortName = PortName,
@@ -115,12 +116,16 @@ namespace FileIO
 
         #region Serial Port Read
         //execute read and then check the recived data, this will use the read raw serial data routine for the mechanics of aquiring the data. 
+        GlobalVar GlobalsAccessHandle = new GlobalVar();
         public string ReadSerialData()
         {
             //read raw data
-            //Open the primary Serial Port (the first port that was found, this will often be the only one.)
-            GlobalVar GlobalsAccessHandle = new GlobalVar ();
-            OpenSerialPort(GlobalsAccessHandle.SerialPortsActiveRobots(0, 0), Convert.ToInt32(GlobalsAccessHandle.SerialPortsActiveRobots(0, 1))); //Get the Baud and port name from Global vars
+            
+            
+           
+        
+            
+
             Console.WriteLine("Data From the Global Vars: " + GlobalsAccessHandle.SerialPortsActiveRobots(0, 0) + " : " +  Convert.ToInt32(GlobalsAccessHandle.SerialPortsActiveRobots(0, 1)));
             String RawData = ReadSerialDataRaw();
             String TrimmedData = RawData.Trim(new Char[] { '^', '\r' });
