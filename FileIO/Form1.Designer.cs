@@ -55,6 +55,7 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.button10);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.button9);
@@ -310,6 +312,16 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(422, 326);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 129);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "Clear data";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +372,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button11;
 
 
 

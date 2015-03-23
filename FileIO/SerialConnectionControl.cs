@@ -20,6 +20,7 @@ namespace FileIO
             //Open the primary Serial Port (the first port that was found, this will often be the only one.)
             SerialDataHandle.OpenSerialPort(GlobalsAccessHandle.PrimarySerialPortName, GlobalsAccessHandle.PrimarySerialPortBaud); //Get the Baud and port name from Global vars, Use the primary.
             initialised = true;
+            Console.WriteLine("IIIIIIII RRRRRRAAAAAAAAANNNNNNNN!!!!!!!!");
         }
 
         #region ReadData

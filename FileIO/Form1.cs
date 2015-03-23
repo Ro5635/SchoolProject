@@ -144,14 +144,16 @@ namespace FileIO
 
 
         }
-
+        SerialConnectionControl SerialConn = new SerialConnectionControl();
+        String[] PacketRecived = new string[2];
         private void button6_Click(object sender, EventArgs e)
         {
 
 
-            SerialConnectionControl SerialConn = new SerialConnectionControl();
+            PacketRecived[0] = "" ;
+            PacketRecived[1] = "" ;
 
-            String[] PacketRecived = SerialConn.ReadData();
+            PacketRecived = SerialConn.ReadData();
             label2.Text = PacketRecived[0];
             label3.Text = PacketRecived[1];
 
@@ -181,6 +183,12 @@ namespace FileIO
         {
             SerialTest.OpenSerialPort("COM6", 9600);
             textBox2.Text = SerialTest.ReadSerialData();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            label2.Text = "";
+            label3.Text = "";
         }
 
     

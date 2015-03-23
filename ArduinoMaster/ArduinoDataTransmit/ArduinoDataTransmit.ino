@@ -24,7 +24,7 @@ if (PCAccessMode){
 //PC Access Mode Enabled, 
 
 delay(1000);
-  Serial.println("^66$56356$136^");
+  Serial.println("^66$5635$136^");
 
 }else {
 //Standard Run
