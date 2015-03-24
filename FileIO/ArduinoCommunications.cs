@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+//using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +27,7 @@ namespace FileIO
         SerialConnectionControl SerialControler = new SerialConnectionControl();
 
 
-        const int MaxvarID = 21;
+        //const int MaxvarID = 21;
         //The array that stores the ID's that have requested updates, these need transmitting to the arduino.
         int[,] RequestedIDs = new int[MaxvarID, 2];
 
@@ -99,19 +99,28 @@ namespace FileIO
             //Go thoruth each ID to be updated and append it to the Array.
             for (int i = 0; i < RequestIDs.Length ; i++){
                 RequestedIDs[i, 0] = RequestIDs[i];
-            }
+                //Now need to look up the priority of each ID and append that to the second "row".
+                RequestedIDs[i, 1] = PriorityLookUpData[RequestIDs[i]];
+                }
+                //Now have ID and Array, now this "table" needs sorting into oder of prioritys so the 
+                //Variables can be transmitted in the correct order.
+                //To do this call the sorting algorithm.
+                //NB, currently this is not OOP because it is only needed here.
+                BubbleSortRequestedIDs(); // This will result in a queue of ID's waiting for transmitt in the correct order.
+                //Call Transmitt on the requested IDs.
+                ........
 
-            //Now need to look up the priority of each ID and append that to the second "row".
-
-
-
+                //Now set the status of each ID to requested.
+                for (int i = 0; i < MaxVars; i++){
+                    VariableStatus[ RequestedIDs[i,0] ] = 1; //Each ID that has been requested be set with a status of 1.
+                }
 
         }
 
 
         public void BubbleSortRequestedIDs()
         {
-            //This sorts the array
+            //This sorts the array, this can be updated later to quicksort.
             int SwapTracking = 0;
             do
             {
@@ -120,7 +129,7 @@ namespace FileIO
                 int HoldingCellIsleA = 0; //Holding location for use during swaps.
                 int HoldingCellIsleB = 0; //Holding Location for use during swaps.
 
-                while (index < (MaxvarID - 1))
+                while (index < (MaxVars - 1))
                 {
 
                     if (RequestedIDs[index, 1] > RequestedIDs[(index + 1), 1])
