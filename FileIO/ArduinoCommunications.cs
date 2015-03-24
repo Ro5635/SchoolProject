@@ -47,7 +47,7 @@ namespace FileIO
         public string RequestData(int ID)
         {
             //Function returns the current data value in the array for given ID
-            //ENsure that the data is present AND is updated with in reasanable time.
+            //Ensure that the data is present AND is updated with in reasanable time.
             if (VariableStatus[ID] >= 0 && VariableStatus[ID] <= 50)
             {
                 return VariableData[ID];
@@ -59,12 +59,19 @@ namespace FileIO
             else
             {
                 //There is not currently a data value avaliable for that ID
+
                 return "^^NoDataPresent^^";
             }
             
         }
- 
 
+        public void RequestUpdate(int[] RequestIDs)
+        {
+            //This function allows for the calling of updates to the variables stored in the table.
+            //this will start the chain of events that see the variable updated with the most recent data.
+            //This function is passed an arry of the varables that are requested to be updated.
+
+        }
 
     }
 }
