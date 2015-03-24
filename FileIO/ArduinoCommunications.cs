@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,8 @@ namespace FileIO
         //The array that stores the ID's that have requested updates, these need transmitting to the arduino.
         int[,] RequestedIDs = new int[MaxvarID, 2];
 
+        //The array that stores the given priority of each of the varable ID's.
+        int[] PriorityLookUpData = new int[MaxVars];
 
         //Class initilised?
         Boolean Initialised = false;
@@ -46,7 +49,27 @@ namespace FileIO
                 VariableStatus[i] = -1;
             }
 
-                Initialised = true; //ensure that this is not run again.
+            //Load in the array that holds the differnt prioritys of each variable ID.
+            //for 
+           // PriorityLookUpData[]
+
+
+
+             FileHandaling SettingsRead = new FileHandaling();
+
+            string VariableLookUpRaw = SettingsRead.ReadText("PriorityData.txt");
+
+            foreach (string line in VariableLookUpRaw.Split('\n'))
+            {
+              
+            }
+
+
+
+
+
+
+            Initialised = true; //ensure that this is not run again.
         }
 
         public string RequestData(int ID)
