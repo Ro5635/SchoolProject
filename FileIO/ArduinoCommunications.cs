@@ -9,8 +9,8 @@ namespace FileIO
     class ArduinoCommunications
     {
         /*
-         *This class holds all of the varables that are being sent to and from the remote devices, the data is held in tables (multi dimension array), there are 3 columns ID Data and Update. 
-         *ID is the varable ID which is an intger and the varables unique name that applys for it throuth out the solution. He data is held in a string form. The update column is an integer
+         *This class holds all of the Variables that are being sent to and from the remote devices, the data is held in tables (multi dimension array), there are 3 columns ID Data and Update. 
+         *ID is the Variable ID which is an intger and the Variables unique name that applys for it throuth out the solution. He data is held in a string form. The update column is an integer
          *the update column will display a 1 is a update has beemn requested. At each parse of the table the number will increment one. 
          * 
          */
@@ -18,9 +18,9 @@ namespace FileIO
         //The data Tables:
 
         //Stored as two seperate arrays not multidimensioinal , objects for simplicity.
-        const int MaxVars = 500; //Max number of varables
-        int[] VarableStatus = new int[MaxVars]; // Status : 0 = set, posative = tallying parses throuth whilst waiting for data, -1: Not initialised this session.
-        string[] VarableData = new string[MaxVars]; // this contains the actual data as a string.
+        const int MaxVars = 500; //Max number of Variables
+        int[] VariableStatus = new int[MaxVars]; // Status : 0 = set, posative = tallying parses throuth whilst waiting for data, -1: Not initialised this session.
+        string[] VariableData = new string[MaxVars]; // this contains the actual data as a string.
 
         //Create Object SerialConnectionControl.
         SerialConnectionControl SerialControler = new SerialConnectionControl();
@@ -28,6 +28,7 @@ namespace FileIO
 
         //Class initilised?
         Boolean Initialised = false;
+
 
         private void initialisation()
         {
@@ -37,15 +38,31 @@ namespace FileIO
             //Set all status to -1:
             for (int i = 0; i < MaxVars; i++)
             {
-                VarableStatus[i] = -1;
+                VariableStatus[i] = -1;
             }
-
-
 
                 Initialised = true; //ensure that this is not run again.
         }
 
+        public string RequestData(int ID)
+        {
+            //Function returns the current data value in the array for given ID
+            //ENsure that the data is present AND is updated with in reasanable time.
+            if (VariableStatus[ID] >= 0 && VariableStatus[ID] <= 50)
+            {
+                return VariableData[ID];
+            }else if(VariableStatus[ID] > 50){
+                //Variable has not beeen updated in a reasnable amount of time
 
+                return "^^DataUnupdated^^";
+            }
+            else
+            {
+                //There is not currently a data value avaliable for that ID
+                return "^^NoDataPresent^^";
+            }
+            
+        }
  
 
 
