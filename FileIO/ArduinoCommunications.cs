@@ -50,20 +50,17 @@ namespace FileIO
             }
 
             //Load in the array that holds the differnt prioritys of each variable ID.
-            //for 
-           // PriorityLookUpData[]
-
-
-
-             FileHandaling SettingsRead = new FileHandaling();
-
+            FileHandaling SettingsRead = new FileHandaling(); //File handler for reading the file.
+            //Read the file using the file handler.
             string VariableLookUpRaw = SettingsRead.ReadText("PriorityData.txt");
 
+            int i2 = 0;
             foreach (string line in VariableLookUpRaw.Split('\n'))
             {
-              
+                PriorityLookUpData[i2] = Convert.ToInt32(line); //Convert the priority to a number
+                i2++; //increment the index.
             }
-
+            //Example, if wanted the priority of variable ID 2 then PriorityLookUpData[2] would give its priority value.
 
 
 
