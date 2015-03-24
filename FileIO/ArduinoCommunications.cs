@@ -26,6 +26,11 @@ namespace FileIO
         SerialConnectionControl SerialControler = new SerialConnectionControl();
 
 
+        const int MaxvarID = 21;
+        //The array that stores the ID's that have requested updates, these need transmitting to the arduino.
+        int[,] RequestedIDs = new int[MaxvarID, 2];
+
+
         //Class initilised?
         Boolean Initialised = false;
 
@@ -69,9 +74,65 @@ namespace FileIO
         {
             //This function allows for the calling of updates to the variables stored in the table.
             //this will start the chain of events that see the variable updated with the most recent data.
-            //This function is passed an arry of the varables that are requested to be updated.
+            //this function is passed an arry of the varables that are requested to be updated.
+            
+            //Go thoruth each ID to be updated and append it to the Array.
+            for (int i = 0; i < RequestIDs.Length ; i++){
+                RequestedIDs[i, 0] = RequestIDs[i];
+            }
+
+            //Now need to look up the priority of each ID and append that to the second "row".
+
+
+
 
         }
+
+
+        public void BubbleSortRequestedIDs()
+        {
+            //This sorts the array
+            int SwapTracking = 0;
+            do
+            {
+                int index = 0;
+                SwapTracking = 0; //Used to know when the array is ordered.
+                int HoldingCellIsleA = 0; //Holding location for use during swaps.
+                int HoldingCellIsleB = 0; //Holding Location for use during swaps.
+
+                while (index < (MaxvarID - 1))
+                {
+
+                    if (RequestedIDs[index, 1] > RequestedIDs[(index + 1), 1])
+                    {
+                        //Fill The golding Cells so not to losse value during the swap
+                        HoldingCellIsleA = RequestedIDs[(index + 1), 0];
+                        HoldingCellIsleB = RequestedIDs[(index + 1), 1];
+
+                        //Swap The value
+                        RequestedIDs[(index + 1), 0] = RequestedIDs[index, 0];
+                        RequestedIDs[(index + 1), 1] = RequestedIDs[index, 1];
+                        RequestedIDs[index, 0] = HoldingCellIsleA;
+                        RequestedIDs[index, 1] = HoldingCellIsleB;
+
+                        SwapTracking++; //Increment the swap tracker by 1.
+                    }
+                    index++; //Increment the index by one, vital step this if you want to go anywhere, moved to next value for comparison.
+                }
+
+            } while (SwapTracking > 0);//Keep looping until array is sorted, no swaps = in order.
+
+            /*
+            The bellow block is for testing and debugging pourposes only.
+            It prints the array to the console.
+            Useful when not using IDE.
+            for (int i = 0; i <= 20 ; i++){
+                Console.WriteLine(RequestedIDs[i,1]);
+                }
+            */
+        }
+
+
 
     }
 }
