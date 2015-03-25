@@ -76,6 +76,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArduinoCommunications.cs" />
+    <Compile Include="Control.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control.Designer.cs">
+      <DependentUpon>Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create.Designer.cs">
+      <DependentUpon>Create.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileHandaling.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
