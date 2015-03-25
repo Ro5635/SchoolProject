@@ -62,6 +62,7 @@ namespace FileIO
             //This Function Cheaks the check sum in the data packet
             try
             {
+                //The check sum is ID * 2 + Number of charactors in the Data.
                 if (Convert.ToInt32(Packet[2]) == (Convert.ToInt32(Packet[0]) * 2) + Convert.ToInt32(Packet[1].Length))
                 { //note chars are only counted not unicode ie o6tw = len 3
                     return true;
@@ -80,8 +81,25 @@ namespace FileIO
 
 
         #region Transmit Data
-        
-        
+
+        public void TransmitData(int ID, string Data)
+        {
+            //This handles function handles the creation of the packet structure and then hands the packet down the the serial
+            //class to handle the actual transmission.
+            //ID$Data$Cheak sum
+
+            //Ensure that everything is ititiated correctly.
+            if (initialised == false)
+            {
+                initialise();
+            }
+
+            //The check sum is ID * 2 + Number of charactors in the Data.
+            int CheckSum = ((ID * 2) + Data.Length); //Calcualte the check sum value.
+            //Call Serial Data handle to transmit the fuly formed packet.
+            SerialDataHandle.WriteSerialData(ID + "$" + Data + "$" + CheckSum); //NB "^" are added later.
+
+        }
 
 
         #endregion Transmit data

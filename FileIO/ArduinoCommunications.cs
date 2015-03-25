@@ -24,12 +24,12 @@ namespace FileIO
         string[] VariableData = new string[MaxVars]; // this contains the actual data as a string.
 
         //Create Object SerialConnectionControl.
-        SerialConnectionControl SerialControler = new SerialConnectionControl();
+        SerialConnectionControl Serialcontroller = new SerialConnectionControl();
 
 
         //const int MaxvarID = 21;
         //The array that stores the ID's that have requested updates, these need transmitting to the arduino.
-        int[,] RequestedIDs = new int[MaxvarID, 2];
+        int[,] RequestedIDs = new int[MaxVars, 2];
 
         //The array that stores the given priority of each of the varable ID's.
         int[] PriorityLookUpData = new int[MaxVars];
@@ -61,10 +61,6 @@ namespace FileIO
                 i2++; //increment the index.
             }
             //Example, if wanted the priority of variable ID 2 then PriorityLookUpData[2] would give its priority value.
-
-
-
-
 
             Initialised = true; //ensure that this is not run again.
         }
@@ -120,11 +116,7 @@ namespace FileIO
                 //To do this call the sorting algorithm.
                 //NB, currently this is not OOP because it is only needed here.
                 BubbleSortRequestedIDs(); // This will result in a queue of ID's waiting for transmitt in the correct order.
-                //Call Transmitt on the requested IDs.
-
-                ........
-
-                //Now set the status of each ID to requested.
+                //Now set the status of each ID to requested, this is too track the length of time each has been waiting.
                 for (int i = 0; i < MaxVars; i++){
                     VariableStatus[ RequestedIDs[i,0] ] = 1; //Each ID that has been requested be set with a status of 1.
                 }
@@ -175,7 +167,16 @@ namespace FileIO
             */
         }
 
+        public void TransmitDataNow(int NumberOfPacketsTOSend)
+        {
+            //This function is called when you wish to transmit data, it is possible to define the number of packets that you wish to send
+            //concecetivly.
+            //This will work down the transmit requested array that has been left in the correct order transmitting the desiered number of packets.
+            //It will then sort the array again to remove the sapce at the front.
 
+            Serialcontroller.TransmitData(ID, DATA);
+
+        }
 
     }
 }
