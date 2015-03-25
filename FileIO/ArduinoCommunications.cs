@@ -181,13 +181,29 @@ namespace FileIO
             do{
                 Serialcontroller.TransmitData(RequestedIDs[CurrentPosition, 0], VariableData[ RequestedIDs[CurrentPosition, 0] ]);
                 CurrentPosition++;//Increment the value of the current position.
-            }while(CurrentPosition < NumberOfPacketsTOSend && CurrentPosition < MaxVars);
+            } while (CurrentPosition < NumberOfPacketsTOSend && CurrentPosition < MaxVars && RequestedIDs[CurrentPosition, 0] != 0);
+            //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
+            //that current position is less than max, inaddition ensure that there is a variable present at that location.
 
             //Next resort the arry, a number of leading items have been removed so shift all outher up.
             //Could change to a circular queue at at a later point.
 
-            //Resort the array....................................................................................................................................
-
+            //Create a tempary Array to hold the data for the re-suffle.
+            int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
+            //Copy the data accross from current position in array
+            for (int i = CurrentPosition; i < MaxVars; i++)
+            {
+                RequestedIDsTMPHold[i, 0] = RequestedIDs[i, 0];
+                RequestedIDsTMPHold[i, 1] = RequestedIDs[i, 1];
+            }
+            //Now clear the Array and copy it all back.
+            RequestedIDs = new int[MaxVars, 2];
+            for (int i = 0; i < MaxVars; i++)
+            {
+                RequestedIDs[i, 0] = RequestedIDsTMPHold[i, 0];
+                RequestedIDs[i, 1] = RequestedIDsTMPHold[i, 1];
+            }
+            //The array is now sorted again.
         }
 
     }
