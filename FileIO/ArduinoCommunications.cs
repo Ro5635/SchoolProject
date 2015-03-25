@@ -123,8 +123,7 @@ namespace FileIO
 
         }
 
-
-        public void BubbleSortRequestedIDs()
+        private void BubbleSortRequestedIDs()
         {
             //This sorts the array, this can be updated later to quicksort.
             int SwapTracking = 0;
@@ -205,6 +204,9 @@ namespace FileIO
             }
             //The array is now sorted again.
         }
+
+        
+
 
     }
 }
