@@ -96,8 +96,21 @@ namespace FileIO
             //this will start the chain of events that see the variable updated with the most recent data.
             //this function is passed an arry of the varables that are requested to be updated.
             
-            //Go thoruth each ID to be updated and append it to the Array.
-            for (int i = 0; i < RequestIDs.Length ; i++){
+            //Perform a liner search to find the last value in the array to fill in from.
+            //If no last value is found 0 will be used. The last value will have the ID 111.
+            int LastPosition = -5635; //If this still has this value after liner search then start array fill from 0.
+            for(int i = 0; i < MaxVars; i++){
+                if(RequestedIDs[i , 0] == 111){
+                    LastPosition = i;
+                }
+            }
+            //If Position was not gound make last position = to 0.
+            if (LastPosition == - 5635){
+                LastPosition = 0;
+            }
+
+            //Go thoruth each ID to be updated and append it to the Array, starting at the last position.
+            for (int i = LastPosition; i < RequestIDs.Length ; i++){
                 RequestedIDs[i, 0] = RequestIDs[i];
                 //Now need to look up the priority of each ID and append that to the second "row".
                 RequestedIDs[i, 1] = PriorityLookUpData[RequestIDs[i]];
@@ -108,6 +121,7 @@ namespace FileIO
                 //NB, currently this is not OOP because it is only needed here.
                 BubbleSortRequestedIDs(); // This will result in a queue of ID's waiting for transmitt in the correct order.
                 //Call Transmitt on the requested IDs.
+
                 ........
 
                 //Now set the status of each ID to requested.
