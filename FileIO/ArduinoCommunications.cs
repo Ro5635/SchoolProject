@@ -174,7 +174,19 @@ namespace FileIO
             //This will work down the transmit requested array that has been left in the correct order transmitting the desiered number of packets.
             //It will then sort the array again to remove the sapce at the front.
 
-            Serialcontroller.TransmitData(ID, DATA);
+            //The Current position in the array, will transmit from this point.
+            int CurrentPosition = 0; //Start At the front of the queue.
+            //RequestedIDs[CurrentPosition,0] gives ID of the variable to transmit.
+
+            do{
+                Serialcontroller.TransmitData(RequestedIDs[CurrentPosition, 0], VariableData[ RequestedIDs[CurrentPosition, 0] ]);
+                CurrentPosition++;//Increment the value of the current position.
+            }while(CurrentPosition < NumberOfPacketsTOSend && CurrentPosition < MaxVars);
+
+            //Next resort the arry, a number of leading items have been removed so shift all outher up.
+            //Could change to a circular queue at at a later point.
+
+            //Resort the array....................................................................................................................................
 
         }
 
