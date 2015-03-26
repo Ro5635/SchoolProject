@@ -101,7 +101,7 @@ namespace FileIO
                     LastPosition = i;
                 }
             }
-            //If Position was not gound make last position = to 0.
+            //If Position was not found make last position = to 0.
             if (LastPosition == - 5635){
                 LastPosition = 0;
             }
@@ -124,7 +124,7 @@ namespace FileIO
 
         }
 
-        private void BubbleSortRequestedIDs()
+        private void BubbleSortRequestedIDs(ref int[,] refArrayTOSort)
         {
             //This sorts the array, this can be updated later to quicksort.
             int SwapTracking = 0;
@@ -315,8 +315,44 @@ namespace FileIO
             }
         }
 
-        public void SendDataToArduino()
+        public void SendDataToArduino(int ID , string Data)
         {
+            //This methord is tasked with allowing external classes to request data to be sent to the remote device
+            //It takes the ID to be transmitted and the data.
+            //With this it appends that data to the correct position in the data table and lists the ID for transmission.
+
+            VariableData[ID] = Data;//Update the data in the data table to the new value.
+
+            //Add this to the queue for sending.
+            //In order to do this search for the end point of the array.
+
+            int LastPosition = -5635; //If this still has this value after liner search then start array fill from 0.
+            for (int i = 0; i < MaxVars; i++)
+            {
+                if (RequestedToSendIDs[i, 0] == 111) //NB 111 is used because this would not be an active ID as it is the request ID.
+                {
+                    LastPosition = i;
+                }
+            }
+            //If Position was not found make last position = to 0.
+            if (LastPosition == -5635)
+            {
+                LastPosition = 0;
+            }
+
+            //Add the requested ID to the array.
+            LastPosition++;//increment last position to get first free position in array.
+            RequestedToSendIDs[LastPosition, 0] = ID;
+
+            //Now need to look up the priority of each ID and append that to the second "row".
+            //This will be used during the sorting.
+            RequestedToSendIDs[LastPosition, 1] = PriorityLookUpData[ID];
+
+            //Now ensure that the array is in the correct order in terms of priority.
+
+            //.........
+
+
 
         }
     }
