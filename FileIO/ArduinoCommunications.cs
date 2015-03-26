@@ -207,9 +207,51 @@ namespace FileIO
 
         public void StandardTimmedSerialActuate()
         {
+            //This will call a read and a write of the serial port.
+            //it will update alll of the status and compleate the neccasary action.
+            //for example if the status is 26 it will clear the data out to show that
+            //it is in an error state, no data has been recived for a considerable amount of time
+            //dispite it being requested. It will also send the request again.
+
+            //Read Data
+            ReadInSerialData();
+
+            //Send Data 10 packets
+
+            TransmitDataNow(10);
+
+            //Now increment the status where status is active (greater than one) 
+            //as it will be a cycle where still waiting for data from arduino.
+
+
+            
 
         }
 
+        private void ReadInSerialData()
+        {
+            //This function calls for a read of the serial port and apends the data to the correct position in the table.
+            //it then changes its status to 0.
 
+            //Read in the data from the port using the serial connection control class.
+            string[] DataIn = Serialcontroller.ReadData(); //gets ID and Data.
+
+            //Update the table
+            VariableStatus[Convert.ToInt32(DataIn[0])] = 0; //Status is ID is no 0.
+
+            VariableData[Convert.ToInt32(DataIn[0])] = DataIn[1]; //Data of ID is now the recived data.
+        }
+
+        private void TickStatusPoint(int NumOfPointsForward)
+        {
+            //This function will increment the status of the relevent IDs by one
+            //The ids that need incrementing are ones that have a active setting currently
+            //and will have a value of greater than 0.
+
+            for (int i = 0; i < MaxVars; i++)
+            {
+
+            }
+        }
     }
 }

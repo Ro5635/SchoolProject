@@ -38,7 +38,7 @@ namespace FileIO
                 {
                     //Awk Successful recepit of uncurupted data
                     SendSuccessfulReceiveAwk(DataSplit[0].ToString());
-                    string[] ReturnPackage = {DataSplit[0],DataSplit[1]};
+                    string[] ReturnPackage = {DataSplit[0],DataSplit[1]}; //Returns ID(0) and Data(1).
                     return ReturnPackage;
                 }
             else
