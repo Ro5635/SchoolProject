@@ -372,5 +372,30 @@ namespace FileIO
 
 
         }
+
+        private void ProccessDataOutWaitingAwkTable()
+        {
+            //This methord goes throuth the data out table that lists all of the IDs that have been sent and have not yet had 
+            //an acknowledgement recived. If the status has incremented above 25 the the retransmission of the data should be
+            //started, this is because the arduino may not have succesfuly recived the packet.
+            int ReTransmitLimit = 40;
+
+            for(int i = 0; i < MaxVars; i++){
+                if (SentIDsWaitingAwk[i] > 0){
+                    //Ensure that ststus is not above re-transmit limut
+                    if(SentIDsWaitingAwk[i] >= ReTransmitLimit){
+                        //status is above limit, call re-transmission.
+
+
+
+                        SentIDsWaitingAwk[i] = 25;//Set ststus to 25 so not re-transmitted again next run.
+
+                    }
+                    SentIDsWaitingAwk[i]++; //Increment ststus by 1 
+                }
+            }
+            
+
+        }
     }
 }
