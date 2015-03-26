@@ -175,49 +175,50 @@ namespace FileIO
             //It will then sort the array again to remove the sapce at the front. The Ids in the transmit requested array are all Ids where 
             //the arduino will be asked to send the newest value.
             //Before sending the requests for updates to local variables it will send out the data that is to be sent to the arduino.
- 
-            ///////////////////////////////////////////////////Send Data To arduino:
 
+            //Create a tempary Array to hold the data for the re-suffle, this will be used for both data and updates transmission.
+            int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
+
+            //Hold the number of packets that have been requested to be sent so that the same number can be sent for updates and data.
+            int HoldNumberOfPacketsToSend = NumberOfPacketsTOSend;
+            ///////////////////////////////////////////////////Send Data To arduino:
             
             int DataSendArrayPosition = 0; //Start At the front of the queue.
-            //RequestedIDs[CurrentPosition,0] gives ID of the variable to transmit.
+            //RequestedToSendIDs[DataSendArrayPosition,0] gives ID of the variable to transmit.
 
             do
             {
-                Serialcontroller.TransmitData(RequestedIDs[DataSendArrayPosition, 0], VariableData[RequestedIDs[DataSendArrayPosition, 0]]);
+                Serialcontroller.TransmitData(RequestedToSendIDs[DataSendArrayPosition, 0], VariableData[RequestedToSendIDs[DataSendArrayPosition, 0]]);
                 DataSendArrayPosition++;//Increment the value of the current position.
-            } while (DataSendArrayPosition < NumberOfPacketsTOSend && DataSendArrayPosition < MaxVars && RequestedIDs[DataSendArrayPosition, 0] != 0);
+            } while (DataSendArrayPosition < NumberOfPacketsTOSend && DataSendArrayPosition < MaxVars && RequestedToSendIDs[DataSendArrayPosition, 0] != 0);
             //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
             //that current position is less than max, inaddition ensure that there is a variable present at that location.
 
             //Next resort the arry, a number of leading items have been removed so shift all outher up.
             //Could change to a circular queue at at a later point.
+            
+            //Ensure tempary holding array is clear
+            RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
 
-            //Create a tempary Array to hold the data for the re-suffle.
-            int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
             //Copy the data accross from current position in array
             for (int i = DataSendArrayPosition; i < MaxVars; i++)
             {
-                RequestedIDsTMPHold[i, 0] = RequestedIDs[i, 0];
-                RequestedIDsTMPHold[i, 1] = RequestedIDs[i, 1];
+                RequestedIDsTMPHold[i, 0] = RequestedToSendIDs[i, 0];
+                RequestedIDsTMPHold[i, 1] = RequestedToSendIDs[i, 1];
             }
             //Now clear the Array and copy it all back.
-            RequestedIDs = new int[MaxVars, 2];
+            RequestedToSendIDs = new int[MaxVars, 2];
             for (int i = 0; i < MaxVars; i++)
             {
-                RequestedIDs[i, 0] = RequestedIDsTMPHold[i, 0];
-                RequestedIDs[i, 1] = RequestedIDsTMPHold[i, 1];
+                RequestedToSendIDs[i, 0] = RequestedIDsTMPHold[i, 0];
+                RequestedToSendIDs[i, 1] = RequestedIDsTMPHold[i, 1];
             }
             //The array is now sorted again.
 
 
+            //////////////////////////////////////////////////////Send requests for updates from arduino to the arduino:
 
-
-
-
-
-
-            ///////////////////////////Send requests for data to the arduino:
+            NumberOfPacketsTOSend = HoldNumberOfPacketsToSend; //reset number of packets to send to origional value.
 
             //The Current position in the array, will transmit from this point.
             int CurrentPosition = 0; //Start At the front of the queue.
@@ -234,8 +235,8 @@ namespace FileIO
             //Next resort the arry, a number of leading items have been removed so shift all outher up.
             //Could change to a circular queue at at a later point.
 
-            //Create a tempary Array to hold the data for the re-suffle.
-            int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
+            //Clear the tempary array of data.
+            RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
             //Copy the data accross from current position in array
             for (int i = CurrentPosition; i < MaxVars; i++)
             {
@@ -312,6 +313,11 @@ namespace FileIO
                         }
                 }
             }
+        }
+
+        public void SendDataToArduino()
+        {
+
         }
     }
 }
