@@ -208,10 +208,9 @@ namespace FileIO
         public void StandardTimmedSerialActuate()
         {
             //This will call a read and a write of the serial port.
-            //it will update alll of the status and compleate the neccasary action.
-            //for example if the status is 26 it will clear the data out to show that
-            //it is in an error state, no data has been recived for a considerable amount of time
-            //dispite it being requested. It will also send the request again.
+            //it will update the status by compleating the neccasary action.
+            //if the status is 26 it is in an error state, no data has been recived 
+            //for a considerable amount of time dispite it being requested, It will send the request again.
 
             //Read Data
             ReadInSerialData();
@@ -223,7 +222,7 @@ namespace FileIO
             //Now increment the status where status is active (greater than one) 
             //as it will be a cycle where still waiting for data from arduino.
 
-
+            TickStatusPoint(1);
             
 
         }
@@ -248,9 +247,23 @@ namespace FileIO
             //The ids that need incrementing are ones that have a active setting currently
             //and will have a value of greater than 0.
 
-            for (int i = 0; i < MaxVars; i++)
+            for (int i = 0; i < MaxVars; i++) //go throuth all IDs
             {
+                //is current status greater than 0.
+                if (VariableStatus[i] > 0)
+                {
+                    //variable status greater than 0, increment by 1.
+                    VariableStatus[i] = (VariableStatus[i] + NumOfPointsForward);
+                        //If status is 40 or bigger send request again.
+                        if(VariableStatus[i] >= 40)
+                        {
+                            //Send request again
+                            int[] UpdateID = { VariableStatus[i] }; //Put ID to request into an array.
+                            RequestUpdate(UpdateID); //Request Update on that ID.
+                            VariableStatus[i] = 25;// put status back down so re-request is not issed net run.
 
+                        }
+                }
             }
         }
     }
