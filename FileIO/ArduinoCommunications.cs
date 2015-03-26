@@ -23,6 +23,9 @@ namespace FileIO
         int[] VariableStatus = new int[MaxVars]; // Status : 0 = set, posative = tallying parses throuth whilst waiting for data, -1: Not initialised this session.
         string[] VariableData = new string[MaxVars]; // this contains the actual data as a string.
 
+        //Create an array to hold the IDs that have been transmited and are waiting for acknowledgement of receipt.
+        int[] SentIDsWaitingAwk = new int[MaxVars];
+
         //Create Object SerialConnectionControl.
         SerialConnectionControl Serialcontroller = new SerialConnectionControl();
 
