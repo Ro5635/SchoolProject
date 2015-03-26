@@ -66,8 +66,17 @@ namespace FileIO
             Initialised = true; //ensure that this is not run again.
         }
 
+        private void checkInitilisation()
+        {
+            if (Initialised == false)
+            {
+                initialisation();
+            }
+        }
+
         public string RequestData(int ID)
         {
+            checkInitilisation();
             //Function returns the current data value in the array for given ID
             //Ensure that the data is present AND is updated with in reasanable time.
             if (VariableStatus[ID] >= 0 && VariableStatus[ID] <= 50)
@@ -89,6 +98,7 @@ namespace FileIO
 
         public void RequestUpdate(int[] RequestIDs)
         {
+            checkInitilisation();
             //This function allows for the calling of updates to the variables stored in the table.
             //this will start the chain of events that see the variable updated with the most recent data.
             //this function is passed an arry of the varables that are requested to be updated.
@@ -169,6 +179,7 @@ namespace FileIO
 
         public void TransmitDataNow(int NumberOfPacketsTOSend)
         {
+            checkInitilisation();
             //This function is called when you wish to transmit data, it is possible to define the number of packets that you wish to send
             //concecetivly.
             //This will work down the transmit requested array that has been left in the correct order transmitting the desiered number of packets.
@@ -255,6 +266,7 @@ namespace FileIO
 
         public void StandardTimmedSerialActuate()
         {
+            checkInitilisation();
             //This will call a read and a write of the serial port.
             //it will update the status by compleating the neccasary action.
             //if the status is 26 it is in an error state, no data has been recived 
@@ -317,6 +329,7 @@ namespace FileIO
 
         public void SendDataToArduino(int ID , string Data)
         {
+            checkInitilisation();
             //This methord is tasked with allowing external classes to request data to be sent to the remote device
             //It takes the ID to be transmitted and the data.
             //With this it appends that data to the correct position in the data table and lists the ID for transmission.
@@ -352,6 +365,7 @@ namespace FileIO
             //This means sorting it using the bubble sort methord.
             BubbleSortRequestedIDs(ref RequestedToSendIDs);
 
+            //The array is now sorted correctltly ready for eventual transmission.
 
 
         }
