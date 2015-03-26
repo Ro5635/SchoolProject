@@ -26,10 +26,11 @@ namespace FileIO
         //Create Object SerialConnectionControl.
         SerialConnectionControl Serialcontroller = new SerialConnectionControl();
 
-
-        //const int MaxvarID = 21;
         //The array that stores the ID's that have requested updates, these need transmitting to the arduino.
         int[,] RequestedIDs = new int[MaxVars, 2];
+
+        //Array That stores the IDs that should be transmitted to the remote device.
+        int[,] RequestedToSendIDs = new int[MaxVars, 2];
 
         //The array that stores the given priority of each of the varable ID's.
         int[] PriorityLookUpData = new int[MaxVars];
@@ -171,17 +172,63 @@ namespace FileIO
             //This function is called when you wish to transmit data, it is possible to define the number of packets that you wish to send
             //concecetivly.
             //This will work down the transmit requested array that has been left in the correct order transmitting the desiered number of packets.
-            //It will then sort the array again to remove the sapce at the front.
+            //It will then sort the array again to remove the sapce at the front. The Ids in the transmit requested array are all Ids where 
+            //the arduino will be asked to send the newest value.
+            //Before sending the requests for updates to local variables it will send out the data that is to be sent to the arduino.
+ 
+            ///////////////////////////////////////////////////Send Data To arduino:
+
+            
+            int DataSendArrayPosition = 0; //Start At the front of the queue.
+            //RequestedIDs[CurrentPosition,0] gives ID of the variable to transmit.
+
+            do
+            {
+                Serialcontroller.TransmitData(RequestedIDs[DataSendArrayPosition, 0], VariableData[RequestedIDs[DataSendArrayPosition, 0]]);
+                DataSendArrayPosition++;//Increment the value of the current position.
+            } while (DataSendArrayPosition < NumberOfPacketsTOSend && DataSendArrayPosition < MaxVars && RequestedIDs[DataSendArrayPosition, 0] != 0);
+            //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
+            //that current position is less than max, inaddition ensure that there is a variable present at that location.
+
+            //Next resort the arry, a number of leading items have been removed so shift all outher up.
+            //Could change to a circular queue at at a later point.
+
+            //Create a tempary Array to hold the data for the re-suffle.
+            int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
+            //Copy the data accross from current position in array
+            for (int i = DataSendArrayPosition; i < MaxVars; i++)
+            {
+                RequestedIDsTMPHold[i, 0] = RequestedIDs[i, 0];
+                RequestedIDsTMPHold[i, 1] = RequestedIDs[i, 1];
+            }
+            //Now clear the Array and copy it all back.
+            RequestedIDs = new int[MaxVars, 2];
+            for (int i = 0; i < MaxVars; i++)
+            {
+                RequestedIDs[i, 0] = RequestedIDsTMPHold[i, 0];
+                RequestedIDs[i, 1] = RequestedIDsTMPHold[i, 1];
+            }
+            //The array is now sorted again.
+
+
+
+
+
+
+
+
+            ///////////////////////////Send requests for data to the arduino:
 
             //The Current position in the array, will transmit from this point.
             int CurrentPosition = 0; //Start At the front of the queue.
             //RequestedIDs[CurrentPosition,0] gives ID of the variable to transmit.
 
             do{
-                Serialcontroller.TransmitData(RequestedIDs[CurrentPosition, 0], VariableData[ RequestedIDs[CurrentPosition, 0] ]);
+                Serialcontroller.TransmitData( 222 , RequestedIDs[CurrentPosition, 0].ToString() );
+                //the ID 222 means request, so above reads as request (222) ID no. RequestedIDs[CurrentPosition, 0] 
                 CurrentPosition++;//Increment the value of the current position.
             } while (CurrentPosition < NumberOfPacketsTOSend && CurrentPosition < MaxVars && RequestedIDs[CurrentPosition, 0] != 0);
-            //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
+            //Ensure that current position has incremented from 0 less than the number of packets to send AND
             //that current position is less than max, inaddition ensure that there is a variable present at that location.
 
             //Next resort the arry, a number of leading items have been removed so shift all outher up.
