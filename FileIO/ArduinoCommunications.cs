@@ -116,7 +116,7 @@ namespace FileIO
                 //Variables can be transmitted in the correct order.
                 //To do this call the sorting algorithm.
                 //NB, currently this is not OOP because it is only needed here.
-                BubbleSortRequestedIDs(); // This will result in a queue of ID's waiting for transmitt in the correct order.
+                 BubbleSortRequestedIDs(ref RequestedIDs); // This will result in a queue of ID's waiting for transmitt in the correct order.
                 //Now set the status of each ID to requested, this is too track the length of time each has been waiting.
                 for (int i = 0; i < MaxVars; i++){
                     VariableStatus[ RequestedIDs[i,0] ] = 1; //Each ID that has been requested be set with a status of 1.
@@ -138,17 +138,17 @@ namespace FileIO
                 while (index < (MaxVars - 1))
                 {
 
-                    if (RequestedIDs[index, 1] > RequestedIDs[(index + 1), 1])
+                    if (refArrayTOSort[index, 1] > refArrayTOSort[(index + 1), 1])
                     {
                         //Fill The golding Cells so not to losse value during the swap
-                        HoldingCellIsleA = RequestedIDs[(index + 1), 0];
-                        HoldingCellIsleB = RequestedIDs[(index + 1), 1];
+                        HoldingCellIsleA = refArrayTOSort[(index + 1), 0];
+                        HoldingCellIsleB = refArrayTOSort[(index + 1), 1];
 
                         //Swap The value
-                        RequestedIDs[(index + 1), 0] = RequestedIDs[index, 0];
-                        RequestedIDs[(index + 1), 1] = RequestedIDs[index, 1];
-                        RequestedIDs[index, 0] = HoldingCellIsleA;
-                        RequestedIDs[index, 1] = HoldingCellIsleB;
+                        refArrayTOSort[(index + 1), 0] = refArrayTOSort[index, 0];
+                        refArrayTOSort[(index + 1), 1] = refArrayTOSort[index, 1];
+                        refArrayTOSort[index, 0] = HoldingCellIsleA;
+                        refArrayTOSort[index, 1] = HoldingCellIsleB;
 
                         SwapTracking++; //Increment the swap tracker by 1.
                     }
@@ -162,7 +162,7 @@ namespace FileIO
             It prints the array to the console.
             Useful when not using IDE.
             for (int i = 0; i <= 20 ; i++){
-                Console.WriteLine(RequestedIDs[i,1]);
+                Console.WriteLine(refArrayTOSort[i,1]);
                 }
             */
         }
@@ -349,8 +349,8 @@ namespace FileIO
             RequestedToSendIDs[LastPosition, 1] = PriorityLookUpData[ID];
 
             //Now ensure that the array is in the correct order in terms of priority.
-
-            //.........
+            //This means sorting it using the bubble sort methord.
+            BubbleSortRequestedIDs(ref RequestedToSendIDs);
 
 
 
