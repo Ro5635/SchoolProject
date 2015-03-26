@@ -203,6 +203,8 @@ namespace FileIO
             do
             {
                 Serialcontroller.TransmitData(RequestedToSendIDs[DataSendArrayPosition, 0], VariableData[RequestedToSendIDs[DataSendArrayPosition, 0]]);
+                //Set status to sent in data out table.
+                SentIDsWaitingAwk[RequestedToSendIDs[DataSendArrayPosition, 0]] = 1;
                 DataSendArrayPosition++;//Increment the value of the current position.
             } while (DataSendArrayPosition < NumberOfPacketsTOSend && DataSendArrayPosition < MaxVars && RequestedToSendIDs[DataSendArrayPosition, 0] != 0);
             //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
@@ -285,6 +287,8 @@ namespace FileIO
             //Now increment the status where status is active (greater than one) 
             //as it will be a cycle where still waiting for data from arduino.
 
+            ProccessDataOutWaitingAwkTable();//proccess the data out waiting for acknowledgement table.
+
             TickStatusPoint(1);
             
 
@@ -298,10 +302,23 @@ namespace FileIO
             //Read in the data from the port using the serial connection control class.
             string[] DataIn = Serialcontroller.ReadData(); //gets ID and Data.
 
-            //Update the table
-            VariableStatus[Convert.ToInt32(DataIn[0])] = 0; //Status is ID is no 0.
+            //check that it is not a a acknowledgement:
 
-            VariableData[Convert.ToInt32(DataIn[0])] = DataIn[1]; //Data of ID is now the recived data.
+            if (Convert.ToInt32(DataIn[0]) == 111)
+            {
+                //it is an acknowledgement, update data out table as neccasary.
+                SentIDsWaitingAwk[Convert.ToInt32(DataIn[1])] = 0;
+                //table updated.
+
+            }
+            else
+            {
+
+                //Update the variable tables
+                VariableStatus[Convert.ToInt32(DataIn[0])] = 0; //Status is ID is number 0.
+
+                VariableData[Convert.ToInt32(DataIn[0])] = DataIn[1]; //Data of ID is now the recived data.
+            }
         }
 
         private void TickStatusPoint(int NumOfPointsForward)
@@ -385,13 +402,13 @@ namespace FileIO
                     //Ensure that ststus is not above re-transmit limut
                     if(SentIDsWaitingAwk[i] >= ReTransmitLimit){
                         //status is above limit, call re-transmission.
-
-
-
-                        SentIDsWaitingAwk[i] = 25;//Set ststus to 25 so not re-transmitted again next run.
+                        int[] ReSendMe = new int[] { i };
+                        RequestUpdate(ReSendMe);
+                        
+                        SentIDsWaitingAwk[i] = 25;//Set status to 25 so not re-transmitted again next run.
 
                     }
-                    SentIDsWaitingAwk[i]++; //Increment ststus by 1 
+                    SentIDsWaitingAwk[i]++; //Increment status by 1 
                 }
             }
             
