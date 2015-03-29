@@ -9,8 +9,8 @@ using System.Windows.Forms;
 namespace FileIO
 {
     /*
-     * This class is responsable for handaling the deployment of saved data to the program and saving of user data, the 
-     * mechanics of doing this are compleated from the file handaling class.
+     * This class is responsible for handling the deployment of saved data to the program and saving of user data, the 
+     * mechanics of doing this are completed from the file handling class.
      * */
     class UserSettingsHandle
     {
@@ -34,7 +34,7 @@ namespace FileIO
             FileHandaling SettingsRead = new FileHandaling();
             // read all text from the settings file
             string SettingsFileDataRaw = SettingsRead.ReadText(SettingsFileLocation);
-            //Split the file at every occerance of the varible indecator.
+            //Split the file at every occerance of the variable indicator.
             // THE ARRAY's DEFINED BELLOW REPRESENTS THE MAX NUMBER OF VARIBLES THAT CAN BE READ, THIS WILL NEED MANIPULATING LATER
             int MaxVaribles = 99;
             string[,] VarArray = new string[MaxVaribles, 3];
@@ -42,12 +42,12 @@ namespace FileIO
 
 
 
-            // varible to track progress through bellow loop
+            // variable to track progress through bellow loop
             int ForeachRunCount = 0;
-            //Split the raw data at every occerance of the dilimeator, this puts into each varible set (name and value)
+            //Split the raw data at every prancer of the dilimeator, this puts into each variable set (name and value)
             string[] DataInBreakDown = SettingsFileDataRaw.Split('\n');    
             
-            //This loop bellow will split the data into an array with the varible identifier and value seperated appropiatly
+            //This loop bellow will split the data into an array with the variable identifier and value separated appropriately
             foreach (string data in SettingsFileDataRaw.Split('\n'))
             {
                 string[] IndexSplit = DataInBreakDown[ForeachRunCount].Split('^');
@@ -76,20 +76,20 @@ namespace FileIO
 
             #region LoadInVaribleLookUpDataFromTextFile
 
-            /*This block will bring in all of the varibleID data from the text file, this is so that the varible can be idenfified,
-             * the block contains code very simular to above but sufficiantly differnt to make an object un viable
+            /*This block will bring in all of the varibleID data from the text file, this is so that the variable can be identified,
+             * the block contains code very similar to above but sufficiently different to make an object un viable
              * */
 
-            //VaribleLook up is the array that will contain all varible lookup data:
+            //VaribleLook up is the array that will contain all variable lookup data:
             string[,] VaribleLookUp = new string[MaxVaribles,3]; 
             string VaribleLookUpRaw = SettingsRead.ReadText("VariblesID.txt");
 
-            // Reset varible to track progress through bellow loop
+            // Reset variable to track progress through bellow loop
             ForeachRunCount = 0;
-            //Split the raw data at every occerance of the dilimeator, this puts into each varible set (name and value)
+            //Split the raw data at every occerance of the dilimeator, this puts into each variable set (name and value)
             DataInBreakDown = VaribleLookUpRaw.Split('\n');    
             
-            //This loop bellow will split the data into an array with the varible identifier and value seperated appropiatly
+            //This loop bellow will split the data into an array with the variable identifier and value separated appropriately
             foreach (string data in VaribleLookUpRaw.Split('\n'))
             {
                 string[] IndexSplit = DataInBreakDown[ForeachRunCount].Split('^');
@@ -125,27 +125,27 @@ namespace FileIO
             {
                 
                if (MasterReadVaribles[i,1] == "1"){
-                  //The above line checks to see wheather the value has been set
+                  //The above line checks to see whether the value has been set
                    if (VaribleLookUp[i, 2] == "Int")
                    {
-                       // the varible is an int, convert to int
+                       // the variable is an int, convert to int
                        GlobalVaribles.SetProperty(VaribleLookUp[i, 1].ToString(), Convert.ToInt32(MasterReadVaribles[i, 0]));
                    }
                    else if (VaribleLookUp[i, 2] == "String")
                    {
-                       //the varible is a string, no conversion neccasary
+                       //the variable is a string, no conversion necessary
                        GlobalVaribles.SetProperty(VaribleLookUp[i, 1].ToString(), MasterReadVaribles[i, 0]);
                    }
                    else
                    {
-                       //Unsuported varible type
+                       //Unsupported variable type
                        if (ErrorUnsportedDisplayed != true)
                        {
-                           MessageBox.Show("Error in reading the selected settings file, The software is not configuired correctly. \n Procced at your own risk!");
-                           // Dont display this error again:
+                           MessageBox.Show("Error in reading the selected settings file, The software is not configured correctly. \n Proceed at your own risk!");
+                           // Don't display this error again:
                            ErrorUnsportedDisplayed = true;
                        }
-                      ErrorReporter.ErrorHandaling("Unable to identify the varible type 'string' or 'int' etc. failed at: " + i.ToString() + ", Attempting to find: " + VaribleLookUp[i, 2].ToString() + ", Full varible name: " + VaribleLookUp[i, 1].ToString(), "","UserSettingsHandle");
+                      ErrorReporter.ErrorHandaling("Unable to identify the variable type 'string' or 'int' etc. failed at: " + i.ToString() + ", Attempting to find: " + VaribleLookUp[i, 2].ToString() + ", Full variable name: " + VaribleLookUp[i, 1].ToString(), "","UserSettingsHandle");
                    }
 
                  }
@@ -161,8 +161,8 @@ namespace FileIO
 
 
 
-        #region Erorr Handaling
- //This section has been redacted from this module and centralised.  
+        #region Error Handling
+ //This section has been redacted from this module and centralized.  
         #endregion Erorr Handaling
 
 
