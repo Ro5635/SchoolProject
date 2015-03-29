@@ -32,9 +32,9 @@ namespace FileIO
 
             //Create Files for start routine:
             ProgramFiles.InitialiseFiles("SplashScreenStartEvents");
-            ProgramFiles.WriteLogFile("Files Created Succesfuly");
+            ProgramFiles.WriteLogFile("Files Created Successfully");
 
-            // increment the proccess bar by one. 
+            // increment the process bar by one. 
             //LoadProgressBar.Increment(1);
 
             //Initilise the serial handler
@@ -43,13 +43,13 @@ namespace FileIO
 
 
             //The bellow block finds the number of increments needed in the progress bar.
-                //Initialise the serial handler
+                //Initialize the serial handler
                 SerialControl SerialSplashHandle = new SerialControl();
-                //Scan the ports avalable
+                //Scan the ports available
                 string SerialPortsActive = SerialSplashHandle.SerialPortScan();
-                //Find the number avalable
+                //Find the number available
                 int NumberOfPorts = SerialPortsActive.Split('#').Length;
-                //calculate number of scans neccasary
+                //calculate number of scans necessary
                 int ScansRequired = NumberOfPorts * 9;
                 LoadProgressBar.Maximum = ScansRequired + 1;
             //The Reason for the plus one is a work around to allow serial scan to finish before being closed, saves having to add a close condition.
@@ -76,7 +76,7 @@ namespace FileIO
             }
             else if (Height >= 200)
             {
-                //start a new thread for the robot serach so not to freze the GUI
+                //start a new thread for the robot search so not to freeze the GUI
                 Thread FindRobotThread = new Thread(NewThreadFindRobot);
                 FindRobotThread.Start();
                 ProggressUpdate.Enabled = true;
@@ -103,7 +103,7 @@ namespace FileIO
             {
                 LastPortsScannedCount = Properties.Settings.Default.PortsScanned;
                 LoadProgressBar.Increment(1);
-                //Bellow closes form and opens next if all scans compleate
+                //Bellow closes form and opens next if all scans complete
                 if (LoadProgressBar.Value == LoadProgressBar.Maximum)
                 {
                     this.Close();
