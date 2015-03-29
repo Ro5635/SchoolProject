@@ -11,19 +11,19 @@ namespace FileIO
     {
         /*
          *This class holds all of the Variables that are being sent to and from the remote devices, the data is held in tables (multi dimension array), there are 3 columns ID Data and Update. 
-         *ID is the Variable ID which is an intger and the Variables unique name that applys for it throuth out the solution. He data is held in a string form. The update column is an integer
-         *the update column will display a 1 is a update has beemn requested. At each parse of the table the number will increment one. 
+         *ID is the Variable ID which is an integer and the Variables unique name that apply for it through out the solution. He data is held in a string form. The update column is an integer
+         *the update column will display a 1 is a update has been requested. At each parse of the table the number will increment one. 
          * 
          */
 
         //The data Tables:
 
-        //Stored as two seperate arrays not multidimensioinal , objects for simplicity.
+        //Stored as two separate arrays not multidimensional , objects for simplicity.
         const int MaxVars = 500; //Max number of Variables
-        int[] VariableStatus = new int[MaxVars]; // Status : 0 = set, posative = tallying parses throuth whilst waiting for data, -1: Not initialised this session.
+        int[] VariableStatus = new int[MaxVars]; // Status : 0 = set, positive = tallying parses through whilst waiting for data, -1: Not initialized this session.
         string[] VariableData = new string[MaxVars]; // this contains the actual data as a string.
 
-        //Create an array to hold the IDs that have been transmited and are waiting for acknowledgement of receipt.
+        //Create an array to hold the IDs that have been transmitted and are waiting for acknowledgment of receipt.
         int[] SentIDsWaitingAwk = new int[MaxVars];
 
         //Create Object SerialConnectionControl.
@@ -35,17 +35,17 @@ namespace FileIO
         //Array That stores the IDs that should be transmitted to the remote device.
         int[,] RequestedToSendIDs = new int[MaxVars, 2];
 
-        //The array that stores the given priority of each of the varable ID's.
+        //The array that stores the given priority of each of the variable ID's.
         int[] PriorityLookUpData = new int[MaxVars];
 
-        //Class initilised?
+        //Class initialized?
         Boolean Initialised = false;
 
 
         private void initialisation()
         {
-            //The pourpose of this class is to prepare the class for active function.
-            //this should be called when this class is first used automaticaly.
+            //The purpose of this class is to prepare the class for active function.
+            //this should be called when this class is first used automatically.
 
             //Set all status to -1:
             for (int i = 0; i < MaxVars; i++)
@@ -53,7 +53,7 @@ namespace FileIO
                 VariableStatus[i] = -1;
             }
 
-            //Load in the array that holds the differnt prioritys of each variable ID.
+            //Load in the array that holds the different priority's of each variable ID.
             FileHandaling SettingsRead = new FileHandaling(); //File handler for reading the file.
             //Read the file using the file handler.
             string VariableLookUpRaw = SettingsRead.ReadText("PriorityData.txt");
@@ -81,18 +81,18 @@ namespace FileIO
         {
             checkInitilisation();
             //Function returns the current data value in the array for given ID
-            //Ensure that the data is present AND is updated with in reasanable time.
+            //Ensure that the data is present AND is updated with in reasonable time.
             if (VariableStatus[ID] >= 0 && VariableStatus[ID] <= 50)
             {
                 return VariableData[ID];
             }else if(VariableStatus[ID] > 50){
-                //Variable has not beeen updated in a reasnable amount of time
+                //Variable has not been updated in a reasonable amount of time
 
                 return "^^DataUnupdated^^";
             }
             else
             {
-                //There is not currently a data value avaliable for that ID
+                //There is not currently a data value available for that ID
 
                 return "^^NoDataPresent^^";
             }
@@ -104,7 +104,7 @@ namespace FileIO
             checkInitilisation();
             //This function allows for the calling of updates to the variables stored in the table.
             //this will start the chain of events that see the variable updated with the most recent data.
-            //this function is passed an arry of the varables that are requested to be updated.
+            //this function is passed an array of the variables that are requested to be updated.
             
             //Perform a liner search to find the last value in the array to fill in from.
             //If no last value is found 0 will be used. The last value will have the ID 111.
@@ -125,11 +125,11 @@ namespace FileIO
                 //Now need to look up the priority of each ID and append that to the second "row".
                 RequestedIDs[i, 1] = PriorityLookUpData[RequestIDs[i]];
                 }
-                //Now have ID and Array, now this "table" needs sorting into oder of prioritys so the 
+                //Now have ID and Array, now this "table" needs sorting into oder of priority's so the 
                 //Variables can be transmitted in the correct order.
                 //To do this call the sorting algorithm.
                 //NB, currently this is not OOP because it is only needed here.
-                 BubbleSortRequestedIDs(ref RequestedIDs); // This will result in a queue of ID's waiting for transmitt in the correct order.
+                 BubbleSortRequestedIDs(ref RequestedIDs); // This will result in a queue of ID's waiting for transmit in the correct order.
                 //Now set the status of each ID to requested, this is too track the length of time each has been waiting.
                 for (int i = 0; i < MaxVars; i++){
                     VariableStatus[ RequestedIDs[i,0] ] = 1; //Each ID that has been requested be set with a status of 1.
@@ -139,7 +139,7 @@ namespace FileIO
 
         private void BubbleSortRequestedIDs(ref int[,] refArrayTOSort)
         {
-            //This sorts the array, this can be updated later to quicksort.
+            //This sorts the array, this can be updated later to quick sort.
             int SwapTracking = 0;
             do
             {
@@ -153,7 +153,7 @@ namespace FileIO
 
                     if (refArrayTOSort[index, 1] > refArrayTOSort[(index + 1), 1])
                     {
-                        //Fill The golding Cells so not to losse value during the swap
+                        //Fill The golding Cells so not to loses value during the swap
                         HoldingCellIsleA = refArrayTOSort[(index + 1), 0];
                         HoldingCellIsleB = refArrayTOSort[(index + 1), 1];
 
@@ -171,7 +171,7 @@ namespace FileIO
             } while (SwapTracking > 0);//Keep looping until array is sorted, no swaps = in order.
 
             /*
-            The bellow block is for testing and debugging pourposes only.
+            The bellow block is for testing and debugging purposes only.
             It prints the array to the console.
             Useful when not using IDE.
             for (int i = 0; i <= 20 ; i++){
@@ -185,12 +185,12 @@ namespace FileIO
             checkInitilisation();
             //This function is called when you wish to transmit data, it is possible to define the number of packets that you wish to send
             //concecetivly.
-            //This will work down the transmit requested array that has been left in the correct order transmitting the desiered number of packets.
-            //It will then sort the array again to remove the sapce at the front. The Ids in the transmit requested array are all Ids where 
+            //This will work down the transmit requested array that has been left in the correct order transmitting the desired number of packets.
+            //It will then sort the array again to remove the space at the front. The Ids in the transmit requested array are all Ids where 
             //the arduino will be asked to send the newest value.
             //Before sending the requests for updates to local variables it will send out the data that is to be sent to the arduino.
 
-            //Create a tempary Array to hold the data for the re-suffle, this will be used for both data and updates transmission.
+            //Create a temporary Array to hold the data for the re-shuffle, this will be used for both data and updates transmission.
             int[,] RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
 
             //Hold the number of packets that have been requested to be sent so that the same number can be sent for updates and data.
@@ -208,15 +208,15 @@ namespace FileIO
                 DataSendArrayPosition++;//Increment the value of the current position.
             } while (DataSendArrayPosition < NumberOfPacketsTOSend && DataSendArrayPosition < MaxVars && RequestedToSendIDs[DataSendArrayPosition, 0] != 0);
             //Ensure that currentpos has incremented from 0 less than the number of packets to send AND
-            //that current position is less than max, inaddition ensure that there is a variable present at that location.
+            //that current position is less than max, in addition ensure that there is a variable present at that location.
 
-            //Next resort the arry, a number of leading items have been removed so shift all outher up.
-            //Could change to a circular queue at at a later point.
+            //Next resort the array, a number of leading items have been removed so shift all outer up.
+            //Could change to a circular queue at a later point.
             
-            //Ensure tempary holding array is clear
+            //Ensure temporary holding array is clear
             RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
 
-            //Copy the data accross from current position in array
+            //Copy the data across from current position in array
             for (int i = DataSendArrayPosition; i < MaxVars; i++)
             {
                 RequestedIDsTMPHold[i, 0] = RequestedToSendIDs[i, 0];
@@ -234,7 +234,7 @@ namespace FileIO
 
             //////////////////////////////////////////////////////Send requests for updates from arduino to the arduino:
 
-            NumberOfPacketsTOSend = HoldNumberOfPacketsToSend; //reset number of packets to send to origional value.
+            NumberOfPacketsTOSend = HoldNumberOfPacketsToSend; //reset number of packets to send to original value.
 
             //The Current position in the array, will transmit from this point.
             int CurrentPosition = 0; //Start At the front of the queue.
@@ -246,14 +246,14 @@ namespace FileIO
                 CurrentPosition++;//Increment the value of the current position.
             } while (CurrentPosition < NumberOfPacketsTOSend && CurrentPosition < MaxVars && RequestedIDs[CurrentPosition, 0] != 0);
             //Ensure that current position has incremented from 0 less than the number of packets to send AND
-            //that current position is less than max, inaddition ensure that there is a variable present at that location.
+            //that current position is less than max, in addition ensure that there is a variable present at that location.
 
-            //Next resort the arry, a number of leading items have been removed so shift all outher up.
-            //Could change to a circular queue at at a later point.
+            //Next resort the array, a number of leading items have been removed so shift all other up.
+            //Could change to a circular queue at a later point.
 
-            //Clear the tempary array of data.
+            //Clear the temporary array of data.
             RequestedIDsTMPHold = new int[(MaxVars * 2), 2];
-            //Copy the data accross from current position in array
+            //Copy the data across from current position in array
             for (int i = CurrentPosition; i < MaxVars; i++)
             {
                 RequestedIDsTMPHold[i, 0] = RequestedIDs[i, 0];
@@ -273,9 +273,9 @@ namespace FileIO
         {
             checkInitilisation();
             //This will call a read and a write of the serial port.
-            //it will update the status by compleating the neccasary action.
-            //if the status is 26 it is in an error state, no data has been recived 
-            //for a considerable amount of time dispite it being requested, It will send the request again.
+            //it will update the status by completing the necessary action.
+            //if the status is 26 it is in an error state, no data has been received 
+            //for a considerable amount of time dispute it being requested, It will send the request again.
 
             //Read Data
             ReadInSerialData();
@@ -287,7 +287,7 @@ namespace FileIO
             //Now increment the status where status is active (greater than one) 
             //as it will be a cycle where still waiting for data from arduino.
 
-            ProccessDataOutWaitingAwkTable();//proccess the data out waiting for acknowledgement table.
+            ProccessDataOutWaitingAwkTable();//process the data out waiting for acknowledgment table.
 
             TickStatusPoint(1);
             
@@ -296,17 +296,17 @@ namespace FileIO
 
         private void ReadInSerialData()
         {
-            //This function calls for a read of the serial port and apends the data to the correct position in the table.
+            //This function calls for a read of the serial port and spends the data to the correct position in the table.
             //it then changes its status to 0.
 
             //Read in the data from the port using the serial connection control class.
             string[] DataIn = Serialcontroller.ReadData(); //gets ID and Data.
 
-            //check that it is not a a acknowledgement:
+            //check that it is not a a acknowledgment:
 
             if (Convert.ToInt32(DataIn[0]) == 111)
             {
-                //it is an acknowledgement, update data out table as neccasary.
+                //it is an acknowledgment, update data out table as necessary.
                 SentIDsWaitingAwk[Convert.ToInt32(DataIn[1])] = 0;
                 //table updated.
 
@@ -317,17 +317,17 @@ namespace FileIO
                 //Update the variable tables
                 VariableStatus[Convert.ToInt32(DataIn[0])] = 0; //Status is ID is number 0.
 
-                VariableData[Convert.ToInt32(DataIn[0])] = DataIn[1]; //Data of ID is now the recived data.
+                VariableData[Convert.ToInt32(DataIn[0])] = DataIn[1]; //Data of ID is now the received data.
             }
         }
 
         private void TickStatusPoint(int NumOfPointsForward)
         {
-            //This function will increment the status of the relevent IDs by one
+            //This function will increment the status of the relevant IDs by one
             //The ids that need incrementing are ones that have a active setting currently
             //and will have a value of greater than 0.
 
-            for (int i = 0; i < MaxVars; i++) //go throuth all IDs
+            for (int i = 0; i < MaxVars; i++) //go through all IDs
             {
                 //is current status greater than 0.
                 if (VariableStatus[i] > 0)
@@ -340,7 +340,7 @@ namespace FileIO
                             //Send request again
                             int[] UpdateID = { VariableStatus[i] }; //Put ID to request into an array.
                             RequestUpdate(UpdateID); //Request Update on that ID.
-                            VariableStatus[i] = 25;// put status back down so re-request is not issed net run.
+                            VariableStatus[i] = 25;// put status back down so re-request is not issued net run.
 
                         }
                 }
@@ -350,7 +350,7 @@ namespace FileIO
         public void SendDataToArduino(int ID , string Data)
         {
             checkInitilisation();
-            //This methord is tasked with allowing external classes to request data to be sent to the remote device
+            //This method is tasked with allowing external classes to request data to be sent to the remote device
             //It takes the ID to be transmitted and the data.
             //With this it appends that data to the correct position in the data table and lists the ID for transmission.
 
@@ -382,24 +382,24 @@ namespace FileIO
             RequestedToSendIDs[LastPosition, 1] = PriorityLookUpData[ID];
 
             //Now ensure that the array is in the correct order in terms of priority.
-            //This means sorting it using the bubble sort methord.
+            //This means sorting it using the bubble sort method.
             BubbleSortRequestedIDs(ref RequestedToSendIDs);
 
-            //The array is now sorted correctltly ready for eventual transmission.
+            //The array is now sorted correctly ready for eventual transmission.
 
 
         }
 
         private void ProccessDataOutWaitingAwkTable()
         {
-            //This methord goes throuth the data out table that lists all of the IDs that have been sent and have not yet had 
-            //an acknowledgement recived. If the status has incremented above 25 the the retransmission of the data should be
-            //started, this is because the arduino may not have succesfuly recived the packet.
+            //This method goes through the data out table that lists all of the IDs that have been sent and have not yet had 
+            //an acknowledgment received. If the status has incremented above 25 the retransmission of the data should be
+            //started, this is because the arduino may not have successfully received the packet.
             int ReTransmitLimit = 40;
 
             for(int i = 0; i < MaxVars; i++){
                 if (SentIDsWaitingAwk[i] > 0){
-                    //Ensure that ststus is not above re-transmit limut
+                    //Ensure that status is not above re-transmit limit
                     if(SentIDsWaitingAwk[i] >= ReTransmitLimit){
                         //status is above limit, call re-transmission.
                         int[] ReSendMe = new int[] { i };
