@@ -20,7 +20,7 @@ namespace FileIO
             //Open the primary Serial Port (the first port that was found, this will often be the only one.)
             SerialDataHandle.OpenSerialPort(GlobalsAccessHandle.PrimarySerialPortName, GlobalsAccessHandle.PrimarySerialPortBaud); //Get the Baud and port name from Global vars, Use the primary.
             initialised = true;
-            Console.WriteLine("The Serial Port Initialisation has begun");
+            Console.WriteLine("The Serial Port Initialization has begun");
         }
 
         #region ReadData
@@ -31,12 +31,12 @@ namespace FileIO
             {
                 initialise();
             }
-            String DataPacket =  SerialDataHandle.ReadSerialData(); //get the Data from the serial controler.
+            String DataPacket =  SerialDataHandle.ReadSerialData(); //get the Data from the serial controller.
             //Split the data:
             string[] DataSplit = DataPacket.Split('$');
-            if (CheckCheckSum(DataSplit))//Do the following only if cheack sum is correct.
+            if (CheckCheckSum(DataSplit))//Do the following only if check sum is correct.
                 {
-                    //Awk Successful recepit of uncurupted data
+                    //Awk Successful receipt of uncorrupted data
                     SendSuccessfulReceiveAwk(DataSplit[0].ToString());
                     string[] ReturnPackage = {DataSplit[0],DataSplit[1]}; //Returns ID(0) and Data(1).
                     return ReturnPackage;
@@ -51,7 +51,7 @@ namespace FileIO
 
         private void SendSuccessfulReceiveAwk(string ID)
         {
-            //Reply "I got That, dont send again"...
+            //Reply "I got That, don't send again"...
             // 111 is the Awk ID
             SerialControl SerialHandler = new SerialControl();
             int CheckSum = ( 111 * 2 ) + ID.Length; 
@@ -59,12 +59,12 @@ namespace FileIO
         }
 
         private Boolean CheckCheckSum(string[] Packet ){
-            //This Function Cheaks the check sum in the data packet
+            //This Function Checks the check sum in the data packet
             try
             {
-                //The check sum is ID * 2 + Number of charactors in the Data.
+                //The check sum is ID * 2 + Number of characters in the Data.
                 if (Convert.ToInt32(Packet[2]) == (Convert.ToInt32(Packet[0]) * 2) + Convert.ToInt32(Packet[1].Length))
-                { //note chars are only counted not unicode ie o6tw = len 3
+                { //note chars are only counted not Unicode IE o6tw = len 3
                     return true;
                 }
                 else
@@ -84,19 +84,19 @@ namespace FileIO
 
         public void TransmitData(int ID, string Data)
         {
-            //This handles function handles the creation of the packet structure and then hands the packet down the the serial
+            //This handles function handles the creation of the packet structure and then hands the packet down the serial
             //class to handle the actual transmission.
-            //ID$Data$Cheak sum
+            //ID$Data$Check sum
 
-            //Ensure that everything is ititiated correctly.
+            //Ensure that everything is initiated correctly.
             if (initialised == false)
             {
                 initialise();
             }
 
-            //The check sum is ID * 2 + Number of charactors in the Data.
-            int CheckSum = ((ID * 2) + Data.Length); //Calcualte the check sum value.
-            //Call Serial Data handle to transmit the fuly formed packet.
+            //The check sum is ID * 2 + Number of characters in the Data.
+            int CheckSum = ((ID * 2) + Data.Length); //Calculate the check sum value.
+            //Call Serial Data handle to transmit the fully formed packet.
             SerialDataHandle.WriteSerialData(ID + "$" + Data + "$" + CheckSum); //NB "^" are added later.
 
         }
