@@ -7,8 +7,8 @@ using System.Threading;
 namespace FileIO
 {
     /*
-     * This class will control all serial IO in the system, create an object instace of this class for each serial port.
-     * Note, this requires the filehandaling.cs in order fro the error reporting to operate as expected. filehandaling.cs is called with automatice
+     * This class will control all serial IO in the system, create an object instance of this class for each serial port.
+     * Note, this requires the filehandaling.cs in order fro the error reporting to operate as expected. filehandaling.cs is called with automatic
      * write to c/Deleateme/
      * */
 
@@ -16,14 +16,14 @@ namespace FileIO
     {
 
 
-        //Are the Logs Created (need initilising?)?
-        // Cretae the Error Reporter object
+        //Are the Logs Created (need initializing?)?
+        // Create the Error Reporter object
         LogAndErrorFiles ErrorReporter = new LogAndErrorFiles();
         //Create the Serial port
         System.IO.Ports.SerialPort NewSerialPort ;
 
         #region SerialPortScan
-        // returns the list of serial ports seperated by '#'
+        // returns the list of serial ports separated by '#'
         public string SerialPortScan(){
         
             try
@@ -31,7 +31,7 @@ namespace FileIO
             string PortsAvalible = "";
         foreach (string port in System.IO.Ports.SerialPort.GetPortNames()) {
             PortsAvalible = PortsAvalible + "#" +  port;
-        }//End Foreach
+        }//End For each
         //strip the first '#' from the string so not to get port "" later.
         PortsAvalible = PortsAvalible.TrimStart('#');
                 
@@ -43,7 +43,7 @@ namespace FileIO
 
             {
 
-                ErrorReporter.ErrorHandaling("Failed to Scan the avalible Serrial Ports", ErrorText.ToString(),"SerialControl");
+                ErrorReporter.ErrorHandaling("Failed to Scan the available Serial Ports", ErrorText.ToString(),"SerialControl");
 
             }//End Try catch group
 
@@ -65,7 +65,7 @@ namespace FileIO
                     {
                         PortName = PortName,
                         BaudRate = BaudRate,
-                        ReadTimeout = 5000,  //Time out to avoid hang when reciving constant data stream.
+                        ReadTimeout = 5000,  //Time out to avoid hang when reviving constant data stream.
                     };
                     NewSerialPort.Open();
                     
@@ -77,7 +77,7 @@ namespace FileIO
                 }//End Try Catch group
 
 
-        }// End Open Serial Port methord
+        }// End Open Serial Port method
         #endregion Serial Port Open
         
         #region Serial Port Close
@@ -89,7 +89,7 @@ namespace FileIO
             }
             catch (Exception ErrorText)
             {
-                ErrorReporter.ErrorHandaling("Failed to close the serial port, Possibly allready closed?", ErrorText.ToString(),"SerialControl");
+                ErrorReporter.ErrorHandaling("Failed to close the serial port, Possibly already closed?", ErrorText.ToString(),"SerialControl");
             }//End Try catch group
             
         }//End CloseSerialPort
@@ -110,7 +110,7 @@ namespace FileIO
                 ErrorReporter.ErrorHandaling("Unable to write to the Serial Port, Note data to be written was: " + WriteThis, ErrorText.ToString(),"SerialControl");
             }//End Try catch group
 
-        }//End WriteSerialData Methord
+        }//End WriteSerialData Method
 
         #endregion Serial Port Write
 
