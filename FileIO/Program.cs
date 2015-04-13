@@ -22,9 +22,9 @@ namespace FileIO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SplashScreen());
-            Application.Run(new LevelSelection());
-            Application.Run(new TaskSelection());
-
+           // Application.Run(new LevelSelection());
+            //Application.Run(new TaskSelection());
+           
             
             //SplashScreen SplashScreenOpen = new SplashScreen();
             //SplashScreenOpen.Show();
