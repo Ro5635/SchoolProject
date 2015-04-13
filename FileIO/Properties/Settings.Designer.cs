@@ -154,5 +154,17 @@ namespace FileIO.Properties {
                 this["PrimaySerialPortBaud"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UserLevelSetting {
+            get {
+                return ((int)(this["UserLevelSetting"]));
+            }
+            set {
+                this["UserLevelSetting"] = value;
+            }
+        }
     }
 }

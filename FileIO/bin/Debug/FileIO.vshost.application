@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="FileIO.exe.manifest" size="3837">
+    <dependentAssembly dependencyType="install" codebase="FileIO.exe.manifest" size="4229">
       <assemblyIdentity name="FileIO.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fi1dp82Fwey/ZQy8aoRWW5fp4Ds22vyR0g8wpyRsXE0=</dsig:DigestValue>
+        <dsig:DigestValue>trWQIYPt4+kY6qV1q5R67YU7Ls8tow4YGhS0M4FAgXM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

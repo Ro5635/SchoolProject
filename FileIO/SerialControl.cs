@@ -8,7 +8,7 @@ namespace FileIO
 {
     /*
      * This class will control all serial IO in the system, create an object instance of this class for each serial port.
-     * Note, this requires the filehandaling.cs in order fro the error reporting to operate as expected. filehandaling.cs is called with automatic
+     * Note, this requires the filehandaling.cs in order for the error reporting to operate as expected. filehandaling.cs is called with automatic
      * write to c/Deleateme/
      * */
 

@@ -30,3 +30,5 @@ C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.TestForm2
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.csproj.GenerateResource.Cache
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.exe.manifest
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.application
+C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.LevelSelection.resources
+C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.TaskSelection.resources

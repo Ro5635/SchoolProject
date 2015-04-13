@@ -77,7 +77,7 @@ namespace FileIO
             #region LoadInVaribleLookUpDataFromTextFile
 
             /*This block will bring in all of the varibleID data from the text file, this is so that the variable can be identified,
-             * the block contains code very similar to above but sufficiently different to make an object un viable
+             * the block contains code very similar to above but sufficiently different to make an object un-viable
              * */
 
             //VaribleLook up is the array that will contain all variable lookup data:
