@@ -21,6 +21,8 @@ namespace FileIO
         Boolean ServosUsedData = Properties.Settings.Default.ServosUsed;
         int SerialBaudRateData = Properties.Settings.Default.SerialBaudRateHOLD;
 
+        int ArduinoBoradData = Properties.Settings.Default.ArduinoBoradData;
+
         string SerialPortsOpenData = Properties.Settings.Default.SerialPortsOpenData;
         string[,] SerialPortsActiveRobotsData = new string[100, 2];//= Properties.Settings.Default.SerialPortsActiveRobotsData;
 
@@ -88,7 +90,11 @@ namespace FileIO
             set { SerialBaudRateData = value; }
         }
 
-
+        public int ArduinoBorad
+        {
+            get { return ArduinoBoradData; }
+            set { ArduinoBoradData = value; }
+        }
 
 
 
@@ -131,6 +137,8 @@ namespace FileIO
         {
             Properties.Settings.Default.SerialBaudRateHOLD = SerialBaudRateData;
             Properties.Settings.Default.ServosUsed = ServosUsedData;
+            Properties.Settings.Default.ArduinoBoradData = ArduinoBoradData;
+
             Properties.Settings.Default.SName = SNameData;
 
         }

@@ -190,5 +190,17 @@ namespace FileIO.Properties {
                 this["SerialBaudRateHOLD"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ArduinoBoradData {
+            get {
+                return ((int)(this["ArduinoBoradData"]));
+            }
+            set {
+                this["ArduinoBoradData"] = value;
+            }
+        }
     }
 }

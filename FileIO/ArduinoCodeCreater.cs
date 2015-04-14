@@ -19,6 +19,7 @@ namespace FileIO
         int AnaloguePinsPoint = 0;
 
         int SerialBaudRate;
+        int CurentBorad;
         string welcomeWebLink = "www.example.co.uk";
 
 
@@ -61,9 +62,12 @@ namespace FileIO
 
         private void LoadData()
         {
-
+            GlobalVar AccessData = new GlobalVar();
             ArduinoFileLocation = @"C:\Deleateme\Example.ino";//@"/Users/robert/Documents/Example.ino";
             //Update all of these by using the arduino robot file.
+
+            //Borad type
+            CurentBorad = AccessData.ArduinoBorad;
 
             //Serial
             SerialBaudRate = 9600;
@@ -179,8 +183,36 @@ namespace FileIO
 
         }
 
-        private void SetupBorad(){
-            //THis finds the correct borad to use and sets the pin arrays as neccasary.
+        private void SetBorad(){
+            //This finds the correct borad to use and sets the pin arrays as neccasary.
+            if (CurentBorad == 0){
+                //The borad is an UNO
+                int[] ArdUNOPWMPins = {3,5,6,7,10,11};
+                int[] ArdUNODigitalPins = {2,4,8,12,13};
+                int[] ArdUNOAnaloguePins = {0,1,2,3};//Need 'A' in front when used.
+                PWMPins = ArdUNOPWMPins;
+                PWMPinsPoint = 0;
+                DigitalPins = ArdUNODigitalPins;
+                DigitalPinsPoint = 0;
+                AnalogPins = ArdUNOAnaloguePins;
+                AnaloguePinsPoint = 0;
+
+            }else if(CurentBorad == 1){
+                //The borad is an arduino Mega
+                int[] ArdMEGAPWMPins = {2,3,4,5,6,7,8,9,10,11,12,13};
+                int[] ArdMEGADigitalPins = {22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+                int[] ArdMEGAAnaloguePins = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};//Need 'A' in front when used.
+                PWMPins = ArdMEGAPWMPins;
+                PWMPinsPoint = 0;
+                DigitalPins = ArdMEGADigitalPins;
+                DigitalPinsPoint = 0;
+                AnalogPins = ArdMEGAAnaloguePins;
+                AnaloguePinsPoint = 0;
+
+            }else if(CurentBorad == 3){
+                //The borad is an Arduino mini
+            }
+
         }
 
     }
