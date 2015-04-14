@@ -23,8 +23,7 @@ void loop() {
 if (PCAccessMode){
 //PC Access Mode Enabled, 
 
-delay(1000);
-  Serial.println("^66$5635$136^");
+
 
 }else {
 //Standard Run
@@ -78,6 +77,10 @@ void serialEvent(){
         Serial.println("Entering PC Access Mode");
         PCAccessMode = true;
         } 
+
+
+        
+
 
     }
     

@@ -9,17 +9,26 @@ namespace FileIO
 {
     class ArduinoCodeCreater
     {
+        int[] PWMPins = int[25];
+        int[] DigitalPins = int[25];
+        int[] AnalogPins = int[25];
+
+        //Variables to hold the current position in the pins array.
+        int PWMPinsPoint = 0;
+        int DigitalPinsPoint = 0;
+        int AnaloguePinsPoint = 0;
 
         int SerialBaudRate;
         string welcomeWebLink = "www.example.co.uk";
 
 
-        Boolean WriteToArduinoFileInitilised = false;
+        //Servo and Motors
+        Boolean ServosUsed = false;
+
+        
         string ArduinoFileLocation = "NA";
 
-
-        static void Main(string[] args)
-        {
+        public void Run(){
             Console.WriteLine("This is a test of plans to make this class");
             //create the object if this class
             ArduinoCodeCreater ArdCodeCreater = new ArduinoCodeCreater();
@@ -30,6 +39,12 @@ namespace FileIO
 
             //Setup the universal parameters to all arduino robots.
             ArdCodeCreater.UniversalSetup();
+
+    }
+
+        static void Main(string[] args)
+        {
+           
 
 
 
@@ -47,7 +62,7 @@ namespace FileIO
         private void LoadData()
         {
 
-            ArduinoFileLocation = @"";//@"/Users/robert/Documents/Example.ino";
+            ArduinoFileLocation = @"C:\Deleateme\Example.ino";//@"/Users/robert/Documents/Example.ino";
             //Update all of these by using the arduino robot file.
 
             //Serial
@@ -135,6 +150,16 @@ namespace FileIO
             //Start the Setup void
             WriteToArduinoFile("void setup() {//Code to be ran one at power on");
             SetupSerial(SerialBaudRate);
+            
+            //Determine The Bord Type
+            SetBorad();
+
+
+            //Need Servo Lib?
+            if (ServosUsed)
+            {
+                WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib"); 
+            }
             WriteToArduinoFile("}//End Setup void");//End Arduino Setup function
 
 
@@ -149,11 +174,14 @@ namespace FileIO
 
             WriteToArduinoFile(LineToWrite);
             WriteToArduinoFile("Serial.begin(BaudRateSerial1);"); //Start the Serial interface
-            WriteToArduinoFile("//print the welcome message " + '\n' + "Serial.println(\"Arduino Robotic System\");" + '\n' + "Serial.println(" + welcomeWebLink + ");");
+            WriteToArduinoFile("//print the welcome message " + '\n' + "Serial.println(\"Arduino Robotic System\");" + '\n' + "Serial.println(\"" + welcomeWebLink + "\");");
 
 
         }
 
+        private void SetupBorad(){
+            //THis finds the correct borad to use and sets the pin arrays as neccasary.
+        }
 
     }
 }

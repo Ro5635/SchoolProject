@@ -166,5 +166,29 @@ namespace FileIO.Properties {
                 this["UserLevelSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ServosUsed {
+            get {
+                return ((bool)(this["ServosUsed"]));
+            }
+            set {
+                this["ServosUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SerialBaudRateHOLD {
+            get {
+                return ((int)(this["SerialBaudRateHOLD"]));
+            }
+            set {
+                this["SerialBaudRateHOLD"] = value;
+            }
+        }
     }
 }

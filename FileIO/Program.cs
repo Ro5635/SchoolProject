@@ -16,15 +16,22 @@ namespace FileIO
         {
             MessageBox.Show("Notice to User, This Program is in Development. I bear no responsablility for premature death as a result of using this software be that human or machine", "Extreme Warning");
 
-            
+            Boolean DebugMode = true;
           
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashScreen());
-           // Application.Run(new LevelSelection());
-            //Application.Run(new TaskSelection());
            
+            if (DebugMode)
+            {
+                Application.Run(new Form1());
+            }
+            else
+            {
+                Application.Run(new SplashScreen());
+                Application.Run(new LevelSelection());
+                Application.Run(new TaskSelection());
+            }
             
             //SplashScreen SplashScreenOpen = new SplashScreen();
             //SplashScreenOpen.Show();

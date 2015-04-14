@@ -446,3 +446,26 @@ SUCCESS FOUND A Robot COM6  9600
 Serial Ports Scanned, Ports: COM6 avalable.
 Written to GlobalVars
 All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.

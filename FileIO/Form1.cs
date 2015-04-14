@@ -191,6 +191,37 @@ namespace FileIO
             label3.Text = "";
         }
 
+
+
+
+        UserSettingsHandle TestHandle = new UserSettingsHandle();
+
+
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            TestHandle.LoadUserSettings(@"C:\Deleateme\TestSave2.robot");
+        }
+
+        
+        private void button13_Click(object sender, EventArgs e)
+        {
+            GlobalVar TestGLobals = new GlobalVar();
+            label5.Text = TestGLobals.SerialBaudRate.ToString();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            ArduinoCodeCreater TEstRun = new ArduinoCodeCreater();
+            TEstRun.Run();
+        }
+
+
     
     
     }

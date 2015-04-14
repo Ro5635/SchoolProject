@@ -131,6 +131,16 @@ namespace FileIO
                        // the variable is an int, convert to int
                        GlobalVaribles.SetProperty(VaribleLookUp[i, 1].ToString(), Convert.ToInt32(MasterReadVaribles[i, 0]));
                    }
+                   else if (VaribleLookUp[i, 2] == "Boolean")
+                   {
+                       if (Convert.ToInt32(MasterReadVaribles[i, 0]) == 1) //Is it true or false
+                       {
+                           GlobalVaribles.SetProperty(VaribleLookUp[i, 1].ToString(), true);//it is true
+                       }else{
+                            GlobalVaribles.SetProperty(VaribleLookUp[i, 1].ToString(),false); // it is false
+                       }
+                      
+                   }
                    else if (VaribleLookUp[i, 2] == "String")
                    {
                        //the variable is a string, no conversion necessary

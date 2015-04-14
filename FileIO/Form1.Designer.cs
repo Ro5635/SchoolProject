@@ -41,6 +41,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,13 +56,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -152,6 +158,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 60);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -182,6 +189,33 @@
             this.tabPage1.Text = "Test1";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(422, 326);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 129);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "Clear data";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(167, 221);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 18;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(96, 191);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(225, 20);
+            this.textBox2.TabIndex = 17;
             // 
             // button9
             // 
@@ -295,32 +329,59 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox2
+            // tabPage3
             // 
-            this.textBox2.Location = new System.Drawing.Point(96, 191);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(225, 20);
-            this.textBox2.TabIndex = 17;
+            this.tabPage3.Controls.Add(this.button14);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.button13);
+            this.tabPage3.Controls.Add(this.button12);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(850, 509);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
-            // button10
+            // button12
             // 
-            this.button10.Location = new System.Drawing.Point(167, 221);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 18;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button12.Location = new System.Drawing.Point(13, 56);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(292, 112);
+            this.button12.TabIndex = 0;
+            this.button12.Text = "button12";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button11
+            // button13
             // 
-            this.button11.Location = new System.Drawing.Point(422, 326);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 129);
-            this.button11.TabIndex = 19;
-            this.button11.Text = "Clear data";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button13.Location = new System.Drawing.Point(478, 56);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(292, 112);
+            this.button13.TabIndex = 1;
+            this.button13.Text = "button13";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(562, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "label5";
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(341, 288);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(292, 112);
+            this.button14.TabIndex = 3;
+            this.button14.Text = "button14";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // Form1
             // 
@@ -339,6 +400,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,6 +436,11 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button14;
 
 
 
