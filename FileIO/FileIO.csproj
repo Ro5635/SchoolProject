@@ -128,6 +128,9 @@
       <DependentUpon>TestForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSettingsHandle.cs" />
+    <EmbeddedResource Include="Control.resx">
+      <DependentUpon>Control.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
