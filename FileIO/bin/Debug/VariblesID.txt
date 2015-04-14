@@ -1,5 +1,5 @@
 ﻿1^ServosUsed^Boolean
 2^SerialBaudRate^Int
-3^SName^String
-4^FavNum^Int
-5^DOBMonth^Int
+3^ServoMic1^Boolean
+4^ServoMic2^Boolean
+5^ArduinoBorad^Int

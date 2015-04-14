@@ -19,6 +19,8 @@ namespace FileIO
         string SNameData = Properties.Settings.Default.SName;
 
         Boolean ServosUsedData = Properties.Settings.Default.ServosUsed;
+        Boolean ServoMic1Data = Properties.Settings.Default.ServoMic1;
+        Boolean ServoMic2Data = Properties.Settings.Default.ServoMic2;
         int SerialBaudRateData = Properties.Settings.Default.SerialBaudRateHOLD;
 
         int ArduinoBoradData = Properties.Settings.Default.ArduinoBoradData;
@@ -84,6 +86,18 @@ namespace FileIO
             set { ServosUsedData = value; }
         }
 
+        public Boolean ServoMic1
+        {
+            get { return ServoMic1Data; }
+            set { ServoMic1Data = value; }
+        }
+
+        public Boolean ServoMic2
+        {
+            get { return ServoMic2Data; }
+            set { ServoMic2Data = value; }
+        }
+
         public int SerialBaudRate
         {
             get { return SerialBaudRateData; }
@@ -96,6 +110,7 @@ namespace FileIO
             set { ArduinoBoradData = value; }
         }
 
+        
 
 
 
@@ -138,14 +153,17 @@ namespace FileIO
             Properties.Settings.Default.SerialBaudRateHOLD = SerialBaudRateData;
             Properties.Settings.Default.ServosUsed = ServosUsedData;
             Properties.Settings.Default.ArduinoBoradData = ArduinoBoradData;
+            Properties.Settings.Default.ServoMic1 = ServoMic1Data;
+            Properties.Settings.Default.ServoMic2 = ServoMic2Data;
+
 
             Properties.Settings.Default.SName = SNameData;
 
         }
 
         public string[] DumpAllValues()
-        {
-            //Add all of the varibels to this
+        {//This method has been mostly redacted.
+            //Add all of the variables to this
           string[] ValueCompile = {AgeData.ToString() , NameData,SNameData                          
                                     } ;
           return ValueCompile;

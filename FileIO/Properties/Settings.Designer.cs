@@ -202,5 +202,29 @@ namespace FileIO.Properties {
                 this["ArduinoBoradData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ServoMic1 {
+            get {
+                return ((bool)(this["ServoMic1"]));
+            }
+            set {
+                this["ServoMic1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ServoMic2 {
+            get {
+                return ((bool)(this["ServoMic2"]));
+            }
+            set {
+                this["ServoMic2"] = value;
+            }
+        }
     }
 }

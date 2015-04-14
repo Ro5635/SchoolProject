@@ -2,4 +2,4 @@
 2^SerialBaudRate^Int
 3^ServoMic1^Boolean
 4^ServoMic2^Boolean
-5^Bord^Int
+5^ArduinoBorad^Int

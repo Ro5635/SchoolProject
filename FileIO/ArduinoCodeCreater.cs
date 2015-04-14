@@ -9,9 +9,9 @@ namespace FileIO
 {
     class ArduinoCodeCreater
     {
-        int[] PWMPins = int[25];
-        int[] DigitalPins = int[25];
-        int[] AnalogPins = int[25];
+        int[] PWMPins = new int[25];
+        int[] DigitalPins = new int[25];
+        int[] AnalogPins = new int[25];
 
         //Variables to hold the current position in the pins array.
         int PWMPinsPoint = 0;
@@ -26,7 +26,12 @@ namespace FileIO
         //Servo and Motors
         Boolean ServosUsed = false;
 
-        
+        Boolean ServoMic1 = false;
+        int ServoMic1Pin;
+        Boolean ServoMic2 = false;
+        int ServoMic2Pin;
+
+
         string ArduinoFileLocation = "NA";
 
         public void Run(){
@@ -41,6 +46,13 @@ namespace FileIO
             //Setup the universal parameters to all arduino robots.
             ArdCodeCreater.UniversalSetup();
 
+            //Write the loop
+            ArdCodeCreater.WriteToArduinoFile("void loop(){");// start the arduino main loop.
+
+            ArdCodeCreater.WriteToArduinoFile("}//End Loop");// End the loop
+
+            //Write the serial Event void:
+            ArdCodeCreater.CreateSerialEvenMethord();
     }
 
         static void Main(string[] args)
@@ -58,6 +70,13 @@ namespace FileIO
         {
             WriteToArduinoFile("//This was created with the arduino code creation Tool.");
             WriteToArduinoFile("//Please paste the bellow text into the arduino compiler and upload to your selected Arduino board.");
+            string BoradName = "Failure";
+            if(CurentBorad == 0){
+                BoradName = "Arduino UNO";
+            } else if (CurentBorad == 1){
+                BoradName = "Arduino Mega";
+            }
+            WriteToArduinoFile("//This was designed for the: " + BoradName);
         }
 
         private void LoadData()
@@ -73,8 +92,8 @@ namespace FileIO
             SerialBaudRate = 9600;
 
             //Micilanius Servos Knob Type
-            Boolean ServoMic1 = false;
-            Boolean ServoMic2 = false;
+            ServoMic1 = AccessData.ServoMic1;
+            ServoMic2 = AccessData.ServoMic2;
 
             //Micilanius servos Sweep Type:
             Boolean ServoSweep = false;
@@ -151,6 +170,19 @@ namespace FileIO
         {
             //This function runs the setup necessary for all arduino types.
 
+            //Create the neccasary Arduino variables:
+            
+            if (ServoMic1)
+            {
+                WriteToArduinoFile("Servo ServoMic1;  // create servo object");
+            }
+            else if (ServoMic2)
+            {
+                WriteToArduinoFile("Servo ServoMic2;  // create servo object ");
+
+            }
+
+
             //Start the Setup void
             WriteToArduinoFile("void setup() {//Code to be ran one at power on");
             SetupSerial(SerialBaudRate);
@@ -162,7 +194,16 @@ namespace FileIO
             //Need Servo Lib?
             if (ServosUsed)
             {
-                WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib"); 
+                WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib");
+                if (ServoMic1)
+                {
+                    ServoMic1Pin = DigitalPins[DigitalPinsPoint++];
+                    WriteToArduinoFile("ServoMic1.attach(" + ServoMic1Pin + "); ");
+                }else if(ServoMic2){
+                    ServoMic2Pin = DigitalPins[DigitalPinsPoint++];
+                    WriteToArduinoFile("ServoMic2.attach(" + ServoMic2Pin + "); ");
+
+                }
             }
             WriteToArduinoFile("}//End Setup void");//End Arduino Setup function
 
@@ -182,6 +223,28 @@ namespace FileIO
 
 
         }
+
+
+        private void CreateSerialEvenMethord()
+        {
+
+            WriteToArduinoFile("void serialEvent(){" + '\n' + " while (Serial.available()){" + '\n' + "  char recivedchar = (char)Serial.read();");
+            WriteToArduinoFile(" if (recivedchar == '^') {" + '\n' + " FinishedInput = true;" + '\n' + " }" + '\n' + "if (recivedchar != '^'){" );
+            WriteToArduinoFile(" recivedtring += recivedchar;" + '\n' + " }" + '\n' + " }" );
+            WriteToArduinoFile("if (FinishedInput) {");
+            WriteToArduinoFile(" coreCommunication();");
+            WriteToArduinoFile(" if(PCAccessMode){");
+            WriteToArduinoFile(" //PC Access mode enabled");
+            WriteToArduinoFile("//this is used because there will be a different command set to listen for compared to the standard set");
+            WriteToArduinoFile(" PCAccessCommunication();");
+            WriteToArduinoFile(" } else {");
+            WriteToArduinoFile(" runTimeCommunication(); // standard runtime communicaation");
+            WriteToArduinoFile("  }" + '\n' + "  recivedtring = \"\";" + '\n' + "  recivedtring = \"\";" + '\n' + "  FinishedInput = false;" + '\n' + "  } " + '\n' + "}");
+            
+
+        }
+
+
 
         private void SetBorad(){
             //This finds the correct borad to use and sets the pin arrays as neccasary.
