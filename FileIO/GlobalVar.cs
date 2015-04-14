@@ -18,6 +18,9 @@ namespace FileIO
         string NameData = Properties.Settings.Default.Name;
         string SNameData = Properties.Settings.Default.SName;
 
+        Boolean ServosUsedData = Properties.Settings.Default.ServosUsed;
+        int SerialBaudRateData = Properties.Settings.Default.SerialBaudRateHOLD;
+
         string SerialPortsOpenData = Properties.Settings.Default.SerialPortsOpenData;
         string[,] SerialPortsActiveRobotsData = new string[100, 2];//= Properties.Settings.Default.SerialPortsActiveRobotsData;
 
@@ -72,6 +75,26 @@ namespace FileIO
             set { FolderNameData = value; }
         }
 
+        //New design from here
+        public Boolean ServosUsed
+        {
+            get { return ServosUsedData; }
+            set { ServosUsedData = value; }
+        }
+
+        public int SerialBaudRate
+        {
+            get { return SerialBaudRateData; }
+            set { SerialBaudRateData = value; }
+        }
+
+
+
+
+
+
+
+
         public int Age
         {
             get { return AgeData; }
@@ -106,8 +129,8 @@ namespace FileIO
         //Save the values to the Settings location
         public void SaveReadValues()
         {
-            Properties.Settings.Default.Age =  AgeData;
-            Properties.Settings.Default.Name = NameData;
+            Properties.Settings.Default.SerialBaudRateHOLD = SerialBaudRateData;
+            Properties.Settings.Default.ServosUsed = ServosUsedData;
             Properties.Settings.Default.SName = SNameData;
 
         }
