@@ -53,6 +53,8 @@ namespace FileIO
 
             //Write the serial Event void:
             ArdCodeCreater.CreateSerialEvenMethord();
+
+
     }
 
         static void Main(string[] args)
@@ -171,7 +173,12 @@ namespace FileIO
             //This function runs the setup necessary for all arduino types.
 
             //Create the neccasary Arduino variables:
-            
+
+            if (ServosUsed)
+            {
+                WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib");
+            }
+
             if (ServoMic1)
             {
                 WriteToArduinoFile("Servo ServoMic1;  // create servo object");
@@ -190,11 +197,10 @@ namespace FileIO
             //Determine The Bord Type
             SetBorad();
 
-
             //Need Servo Lib?
             if (ServosUsed)
             {
-                WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib");
+               
                 if (ServoMic1)
                 {
                     ServoMic1Pin = DigitalPins[DigitalPinsPoint++];
@@ -241,6 +247,22 @@ namespace FileIO
             WriteToArduinoFile(" runTimeCommunication(); // standard runtime communicaation");
             WriteToArduinoFile("  }" + '\n' + "  recivedtring = \"\";" + '\n' + "  recivedtring = \"\";" + '\n' + "  FinishedInput = false;" + '\n' + "  } " + '\n' + "}");
             
+            //Set up Core Communication:
+
+            WriteToArduinoFile("void coreCommunication(){");
+            WriteToArduinoFile("if(recivedtring == \"Robot?\"){");
+            WriteToArduinoFile("//Start Up Communication from Program");
+            WriteToArduinoFile("Serial.println(\"^Arduino_Robot^\");");
+            WriteToArduinoFile("Serial.println(\"Entering PC Access Mode\");");
+            WriteToArduinoFile("PCAccessMode = true;");
+            WriteToArduinoFile(" } ");
+            WriteToArduinoFile("}");
+            WriteToArduinoFile("void  runTimeCommunication(){");
+            WriteToArduinoFile("}");
+            WriteToArduinoFile("void PCAccessCommunication(){");
+            WriteToArduinoFile("}");
+            WriteToArduinoFile("}");
+            WriteToArduinoFile("”");
 
         }
 
@@ -277,6 +299,37 @@ namespace FileIO
             }
 
         }
+
+
+
+                private void PositionRoutineServoMic1(){
+        //This void writes out the Position routine for ServoMic1.
+
+        WriteToArduinoFile("int PositionServoMic1(int Pos){//This is a position function for servoMic1");
+        WriteToArduinoFile("//The value for the servo should be between 0 an 180");
+        WriteToArduinoFile(" if (Pos > 179){");
+        WriteToArduinoFile(" servoMic1.write(180);");
+        WriteToArduinoFile(" } else if(Pos < 0){");
+        WriteToArduinoFile("  servoMic1.write(0);");
+        WriteToArduinoFile("}else{");
+        WriteToArduinoFile(" servoMic1.write(Pos); }");
+        WriteToArduinoFile("}");
+        }
+
+        private void PositionRoutineServoMic2(){
+        //This void writes out the Position routine for ServoMic1.
+        WriteToArduinoFile("int PositionServoMic2(int Pos){//This is a position function for servoMic2");
+        WriteToArduinoFile("//The value for the servo should be between 0 an 180");
+        WriteToArduinoFile(" if (Pos > 179){");
+        WriteToArduinoFile(" servoMic2.write(180);");
+        WriteToArduinoFile(" } else if(Pos < 0){");
+        WriteToArduinoFile("  servoMic2.write(0);");
+        WriteToArduinoFile("}else{");
+        WriteToArduinoFile(" servoMic2.write(Pos); }");
+        WriteToArduinoFile("}");
+
+        }
+
 
     }
 }
