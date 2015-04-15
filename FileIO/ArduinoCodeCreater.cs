@@ -49,6 +49,8 @@ namespace FileIO
             //Write the loop
             ArdCodeCreater.WriteToArduinoFile("void loop(){");// start the arduino main loop.
 
+            ArdCodeCreater.StandardLoopedFunctions();
+
             ArdCodeCreater.WriteToArduinoFile("}//End Loop");// End the loop
 
             //Write the serial Event void:
@@ -190,6 +192,16 @@ namespace FileIO
 
             //Create the neccasary Arduino variables:
 
+            //variables for serial operations:
+            WriteToArduinoFile("boolean syncSuccess = false;  //Sync status" + '\n' + "boolean syncTest = false; //This is used to compleate 3 way handshake");
+            WriteToArduinoFile("boolean FinishedInput = false;" + '\n' + "String recivedtring = \"\";");
+
+            WriteToArduinoFile("//PC Access Mode Var's" + '\n' + "boolean PCAccessMode = false;");
+
+
+
+
+
             if (ServosUsed)
             {
                 WriteToArduinoFile("#include <Servo.h>//Include the Servo Lib");
@@ -198,11 +210,12 @@ namespace FileIO
             if (ServoMic1)
             {
                 WriteToArduinoFile("Servo ServoMic1;  // create servo object");
+                WriteToArduinoFile("int ServoMic1Position = 0;");//Create the variable to be used to hold the position of the arm in the arduino.
             }
             if (ServoMic2)
             {
                 WriteToArduinoFile("Servo ServoMic2;  // create servo object ");
-
+                WriteToArduinoFile("int ServoMic2Position = 0;");//Create the variable to be used to hold the position of the arm in the arduino.
             }
 
 
@@ -219,10 +232,10 @@ namespace FileIO
                
                 if (ServoMic1)
                 {
-                    ServoMic1Pin = DigitalPins[DigitalPinsPoint++];
+                    ServoMic1Pin = PWMPins[PWMPinsPoint++];
                     WriteToArduinoFile("ServoMic1.attach(" + ServoMic1Pin + "); ");
                 }if(ServoMic2){
-                    ServoMic2Pin = DigitalPins[DigitalPinsPoint++];
+                    ServoMic2Pin = PWMPins[PWMPinsPoint++];
                     WriteToArduinoFile("ServoMic2.attach(" + ServoMic2Pin + "); ");
 
                 }
@@ -237,7 +250,7 @@ namespace FileIO
 
             WriteToArduinoFile("//The system is designed to operate at a selection of baud rates, these are:");
             WriteToArduinoFile("//1200,2400,4800,9600,19200,38400,57600,115200,230400");
-            string LineToWrite = "int BaudRateSerial1 = " + BaudRate + "//The BaudRate to use for Communication";
+            string LineToWrite = "int BaudRateSerial1 = " + BaudRate + ";//The BaudRate to use for Communication";
 
             WriteToArduinoFile(LineToWrite);
             WriteToArduinoFile("Serial.begin(BaudRateSerial1);"); //Start the Serial interface
@@ -283,7 +296,7 @@ namespace FileIO
             WriteToArduinoFile("}");
             WriteToArduinoFile("void PCAccessCommunication(){");
             WriteToArduinoFile("}");
-            WriteToArduinoFile("}");
+
 
         }
 
@@ -329,11 +342,11 @@ namespace FileIO
         WriteToArduinoFile("int PositionServoMic1(int Pos){//This is a position function for servoMic1");
         WriteToArduinoFile("//The value for the servo should be between 0 an 180");
         WriteToArduinoFile(" if (Pos > 179){");
-        WriteToArduinoFile(" servoMic1.write(180);");
+        WriteToArduinoFile(" ServoMic1.write(180);");
         WriteToArduinoFile(" } else if(Pos < 0){");
-        WriteToArduinoFile("  servoMic1.write(0);");
+        WriteToArduinoFile("  ServoMic1.write(0);");
         WriteToArduinoFile("}else{");
-        WriteToArduinoFile(" servoMic1.write(Pos); }");
+        WriteToArduinoFile(" ServoMic1.write(Pos); }");
         WriteToArduinoFile("}");
         }
 
@@ -342,13 +355,36 @@ namespace FileIO
         WriteToArduinoFile("int PositionServoMic2(int Pos){//This is a position function for servoMic2");
         WriteToArduinoFile("//The value for the servo should be between 0 an 180");
         WriteToArduinoFile(" if (Pos > 179){");
-        WriteToArduinoFile(" servoMic2.write(180);");
+        WriteToArduinoFile(" ServoMic2.write(180);");
         WriteToArduinoFile(" } else if(Pos < 0){");
-        WriteToArduinoFile("  servoMic2.write(0);");
+        WriteToArduinoFile("  ServoMic2.write(0);");
         WriteToArduinoFile("}else{");
-        WriteToArduinoFile(" servoMic2.write(Pos); }");
+        WriteToArduinoFile(" ServoMic2.write(Pos); }");
         WriteToArduinoFile("}");
 
+        }
+
+
+        private void StandardLoopedFunctions(){
+            //This function assemebles all of the looped functions.
+
+            if (ServosUsed)
+            {
+                WriteToArduinoFile("UpdateServos();");
+            }
+
+        }
+
+        private void UpdateServos()
+        {
+            //This function Creates the update for any servos that are included in the project.
+            if(ServoMic1){
+                WriteToArduinoFile("PositionServoMic1(ServoMic1Position);//Update the position of ServoMic1");//Update the position of ServoMic1
+            }
+            if (ServoMic2)
+            {
+                WriteToArduinoFile("PositionServoMic2(ServoMic2Position);//Update the position of ServoMic2");//Update the position of ServoMic2
+            }
         }
 
 
