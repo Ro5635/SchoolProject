@@ -54,6 +54,17 @@ namespace FileIO
             //Write the serial Event void:
             ArdCodeCreater.CreateSerialEvenMethord();
 
+            if (ArdCodeCreater.ServoMic1)
+            {
+                ArdCodeCreater.PositionRoutineServoMic1();
+            }
+            if (ArdCodeCreater.ServoMic2)
+            {
+                ArdCodeCreater.PositionRoutineServoMic2();
+
+            }
+            
+           
 
     }
 
@@ -96,6 +107,11 @@ namespace FileIO
             //Micilanius Servos Knob Type
             ServoMic1 = AccessData.ServoMic1;
             ServoMic2 = AccessData.ServoMic2;
+
+            //Are servos used?
+            if (ServoMic1 || ServoMic2){
+                ServosUsed = true;
+            }
 
             //Micilanius servos Sweep Type:
             Boolean ServoSweep = false;
@@ -183,7 +199,7 @@ namespace FileIO
             {
                 WriteToArduinoFile("Servo ServoMic1;  // create servo object");
             }
-            else if (ServoMic2)
+            if (ServoMic2)
             {
                 WriteToArduinoFile("Servo ServoMic2;  // create servo object ");
 
@@ -205,7 +221,7 @@ namespace FileIO
                 {
                     ServoMic1Pin = DigitalPins[DigitalPinsPoint++];
                     WriteToArduinoFile("ServoMic1.attach(" + ServoMic1Pin + "); ");
-                }else if(ServoMic2){
+                }if(ServoMic2){
                     ServoMic2Pin = DigitalPins[DigitalPinsPoint++];
                     WriteToArduinoFile("ServoMic2.attach(" + ServoMic2Pin + "); ");
 
@@ -225,8 +241,9 @@ namespace FileIO
 
             WriteToArduinoFile(LineToWrite);
             WriteToArduinoFile("Serial.begin(BaudRateSerial1);"); //Start the Serial interface
-            WriteToArduinoFile("//print the welcome message " + '\n' + "Serial.println(\"Arduino Robotic System\");" + '\n' + "Serial.println(\"" + welcomeWebLink + "\");");
-
+            WriteToArduinoFile("//print the welcome message ");
+            WriteToArduinoFile("Serial.println(\"Arduino Robotic System\");");
+            WriteToArduinoFile("Serial.println(\"" + welcomeWebLink + "\");");
 
         }
 
@@ -234,8 +251,13 @@ namespace FileIO
         private void CreateSerialEvenMethord()
         {
 
-            WriteToArduinoFile("void serialEvent(){" + '\n' + " while (Serial.available()){" + '\n' + "  char recivedchar = (char)Serial.read();");
-            WriteToArduinoFile(" if (recivedchar == '^') {" + '\n' + " FinishedInput = true;" + '\n' + " }" + '\n' + "if (recivedchar != '^'){" );
+            WriteToArduinoFile("void serialEvent(){" );
+            WriteToArduinoFile(" while (Serial.available()){");
+            WriteToArduinoFile("  char recivedchar = (char)Serial.read();");
+            WriteToArduinoFile(" if (recivedchar == '^') {");
+            WriteToArduinoFile(" FinishedInput = true;");
+            WriteToArduinoFile(" }");
+            WriteToArduinoFile("if (recivedchar != '^'){");
             WriteToArduinoFile(" recivedtring += recivedchar;" + '\n' + " }" + '\n' + " }" );
             WriteToArduinoFile("if (FinishedInput) {");
             WriteToArduinoFile(" coreCommunication();");
@@ -262,7 +284,6 @@ namespace FileIO
             WriteToArduinoFile("void PCAccessCommunication(){");
             WriteToArduinoFile("}");
             WriteToArduinoFile("}");
-            WriteToArduinoFile("”");
 
         }
 

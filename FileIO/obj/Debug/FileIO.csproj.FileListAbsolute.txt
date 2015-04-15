@@ -32,3 +32,4 @@ C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.exe.manif
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.application
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.LevelSelection.resources
 C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.TaskSelection.resources
+C:\Users\Robert\Documents\GitHub\SchoolProject\FileIO\obj\Debug\FileIO.Control.resources
