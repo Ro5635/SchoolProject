@@ -346,7 +346,7 @@ namespace FileIO
         WriteToArduinoFile(" } else if(Pos < 0){");
         WriteToArduinoFile("  ServoMic1.write(0);");
         WriteToArduinoFile("}else{");
-        WriteToArduinoFile(" ServoMic1.write(Pos); }");
+        WriteToArduinoFile(" ServoMic1.write(Pos);" + '\n' +  "}");
         WriteToArduinoFile("}");
         }
 
@@ -359,7 +359,7 @@ namespace FileIO
         WriteToArduinoFile(" } else if(Pos < 0){");
         WriteToArduinoFile("  ServoMic2.write(0);");
         WriteToArduinoFile("}else{");
-        WriteToArduinoFile(" ServoMic2.write(Pos); }");
+        WriteToArduinoFile(" ServoMic2.write(Pos);" + '\n' +  "}");
         WriteToArduinoFile("}");
 
         }
@@ -370,7 +370,7 @@ namespace FileIO
 
             if (ServosUsed)
             {
-                WriteToArduinoFile("UpdateServos();");
+                UpdateServos();
             }
 
         }
