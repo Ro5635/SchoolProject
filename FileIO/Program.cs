@@ -16,7 +16,7 @@ namespace FileIO
         {
             MessageBox.Show("Notice to User, This Program is in Development. I bear no responsablility for premature death as a result of using this software be that human or machine", "Extreme Warning");
 
-            Boolean DebugMode = true;
+            Boolean DebugMode = false;
           
 
             Application.EnableVisualStyles();

@@ -78,6 +78,7 @@
             this.LoadProgressBar.Step = 50;
             this.LoadProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.LoadProgressBar.TabIndex = 2;
+            this.LoadProgressBar.Click += new System.EventHandler(this.LoadProgressBar_Click);
             // 
             // SerialListenDelay
             // 

@@ -132,6 +132,11 @@ namespace FileIO
             TimeSerialListenDelayCounts = TimeSerialListenDelayCounts + 1;
         }
 
+        private void LoadProgressBar_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

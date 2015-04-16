@@ -16,5 +16,10 @@ namespace FileIO
         {
             InitializeComponent();
         }
+
+        private void Control_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
