@@ -226,5 +226,17 @@ namespace FileIO.Properties {
                 this["ServoMic2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("N/A")]
+        public string SaveRobotLoacation {
+            get {
+                return ((string)(this["SaveRobotLoacation"]));
+            }
+            set {
+                this["SaveRobotLoacation"] = value;
+            }
+        }
     }
 }

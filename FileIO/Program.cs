@@ -24,11 +24,13 @@ namespace FileIO
            
             if (DebugMode)
             {
+
                 Application.Run(new Form1());
             }
             else
             {
                 //Application.Run(new SplashScreen());
+
                 Application.Run(new LevelSelection());
                 Application.Run(new TaskSelection());
             }

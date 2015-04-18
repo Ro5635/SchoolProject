@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="72704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="581632">
       <assemblyIdentity name="FileIO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hGwZhl1j/+TNw2HN/p9faoPApoxdBhylsypFVYSt5h0=</dsig:DigestValue>
+        <dsig:DigestValue>tsvBHqm27Yonf/c6gOXEA18GcDXnOB6rA0pdwvNZfk8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="FileIO.exe.config" size="2871">
+  <file name="FileIO.exe.config" size="3001">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7auLiRaP7MLIMuozB5qkqEJn1SFaLU1sXg7atuLtYyw=</dsig:DigestValue>
+      <dsig:DigestValue>sS0Qf9Wi18MGuFTWcEK3I7I4dmKAQK+cA/sAKfTR7vY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PriorityData.txt" size="81">

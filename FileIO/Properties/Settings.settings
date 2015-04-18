@@ -53,5 +53,8 @@
     <Setting Name="ServoMic2" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SaveRobotLoacation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">N/A</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -17,22 +17,23 @@ namespace FileIO
         {
             InitializeComponent();
         }
-
+        [STAThread]
         private void ButtonControl_Click(object sender, EventArgs e)
         {
             Thread OpenThread = new Thread(OpenControlForm);
+            OpenThread.SetApartmentState(ApartmentState.STA);
             OpenThread.Start();
 
             this.Close();
         }
 
-
+        [STAThread]
         private void OpenControlForm()
         {
             Application.Run(new Control());
             
         }
-
+        [STAThread]
         private void OpenCreateForm()
         {
             Application.Run(new Create());
@@ -43,6 +44,7 @@ namespace FileIO
         private void ButtonCreateOpt_Click(object sender, EventArgs e)
         {
             Thread OpenThread2 = new Thread(OpenCreateForm);
+            OpenThread2.SetApartmentState(ApartmentState.STA);
             OpenThread2.Start();
             this.Close();
         }
