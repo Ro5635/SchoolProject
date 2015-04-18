@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="579584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="590336">
       <assemblyIdentity name="FileIO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>herUea4F0Zp8V+lfuNJ3e73BSo3UkfF5TdTtq9QAKLI=</dsig:DigestValue>
+        <dsig:DigestValue>Ze0nflW5lcFoWHJyYCf5CT7ooHk1fjtl3ngym2z5RWY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="FileIO.exe.config" size="2871">
+  <file name="FileIO.exe.config" size="3001">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7auLiRaP7MLIMuozB5qkqEJn1SFaLU1sXg7atuLtYyw=</dsig:DigestValue>
+      <dsig:DigestValue>sS0Qf9Wi18MGuFTWcEK3I7I4dmKAQK+cA/sAKfTR7vY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PriorityData.txt" size="81">
@@ -71,13 +71,13 @@
       <dsig:DigestValue>/CUSlVqfXDIVLjALxW3dE/ze4x8p3Qs+5zRwdAQSohM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="VariblesID.txt" size="107">
+  <file name="VariblesID.txt" size="247">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QebMucVoQ5rZNual+bm3LuzLxthDKyM6GXDF8JuVths=</dsig:DigestValue>
+      <dsig:DigestValue>Zz/ZKi9diRQ/K7cmnJtEBDYXoAzKd/uDmU/PZMNNtmo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

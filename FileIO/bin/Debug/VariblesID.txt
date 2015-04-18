@@ -5,7 +5,7 @@
 5^ArduinoBorad^Int
 6^DirectControlAPIN^Int
 7^DirectControlBPIN^Int
-8^PWMControlAPIN^Int
-9^PWMControlBPIN^Int
+8^PWMSpeedAPIN^Int
+9^PWMSpeedBPIN^Int
 10^BrakeControlPINA^Int
 11^BrakeControlPINB^Int

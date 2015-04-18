@@ -179,10 +179,81 @@ namespace FileIO
             //Submit the form changes as apptopiate
 
             //Compleate For A first:
+
+            //Direction Block
+            if (checkBoxDirecA12.Checked)
+            {
+                WriteToFile("6^12");
+            } else if (checkBoxDirecA13.Checked){
+                WriteToFile("6^13");
+            }else{
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Direction Block
+
+            //Speed Block
+            if (checkBoxSpeedA11.Checked)
+            {
+                WriteToFile("8^11");
+            }
+            else if (checkBoxSpeedA3.Checked)
+            {
+                WriteToFile("8^3");
+            }
+            else
+            {
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Speed block
+
+            //Brake Block
+            if (checkBoxBrakeA8.Checked)
+            {
+                WriteToFile("10^8");
+            } else if(checkBoxBrakeA9.Checked){
+                WriteToFile("10^9");
+            } else
+            {
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Brake Block
             
-           
-            
+            }
+    
+        private void checkBoxDirecA12_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxDirecA13.Checked = false; //Both cannot be checked
         }
+
+        private void checkBoxDirecA13_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxDirecA12.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxBrakeA8_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxBrakeA9.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxBrakeA9_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxBrakeA8.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxSpeedA3_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSpeedA11.Checked = false;//Both cannot be checked!
+        }
+
+        private void checkBoxSpeedA11_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSpeedA3.Checked = false; //Both cannot be checked.
+        }
+        
+
 
     }
 }
