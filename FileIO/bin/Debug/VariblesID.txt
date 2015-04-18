@@ -9,3 +9,4 @@
 9^PWMSpeedBPIN^Int
 10^BrakeControlPINA^Int
 11^BrakeControlPINB^Int
+12^NumberOfLEDS^Int
