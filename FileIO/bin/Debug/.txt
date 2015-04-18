@@ -477,3 +477,15 @@ All ports scanned.
 Serial Ports Scanned, Ports:  avalable.
 Written to GlobalVars
 All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.
+Serial Ports Scanned, Ports:  avalable.
+Written to GlobalVars
+All ports scanned.

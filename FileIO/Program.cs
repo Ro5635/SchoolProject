@@ -28,7 +28,7 @@ namespace FileIO
             }
             else
             {
-                Application.Run(new SplashScreen());
+                //Application.Run(new SplashScreen());
                 Application.Run(new LevelSelection());
                 Application.Run(new TaskSelection());
             }
