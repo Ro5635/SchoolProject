@@ -221,6 +221,65 @@ namespace FileIO
             }
             //End Brake Block
             
+
+            ///////////////Same again but for motor B///////////
+
+            //Direction Block
+            if (checkBoxDirecB12.Checked)
+            {
+                WriteToFile("7^12");
+            }
+            else if (checkBoxDirecB13.Checked)
+            {
+                WriteToFile("7^13");
+            }
+            else
+            {
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Direction Block
+
+            //Speed Block
+            if (checkBoxSpeedB11.Checked)
+            {
+                WriteToFile("9^11");
+            }
+            else if (checkBoxSpeedB3.Checked)
+            {
+                WriteToFile("9^3");
+            }
+            else
+            {
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Speed block
+
+            //Brake Block
+            if (checkBoxBrakeB8.Checked)
+            {
+                WriteToFile("11^8");
+            }
+            else if (checkBoxBrakeB9.Checked)
+            {
+                WriteToFile("11^9");
+            }
+            else
+            {
+                MessageBox.Show("Please ensure at least one box is selected in all Sections");
+                return;
+            }
+            //End Brake Block
+
+            ///////////////////////END B///////////////////////////////
+
+            /////If in basic mode stop there, outher wise continue to next pannel.
+
+            if(){
+
+            }
+
             }
     
         private void checkBoxDirecA12_CheckedChanged(object sender, EventArgs e)
@@ -251,6 +310,36 @@ namespace FileIO
         private void checkBoxSpeedA11_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxSpeedA3.Checked = false; //Both cannot be checked.
+        }
+
+        private void checkBoxDirecB12_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxDirecB13.Checked = false; //Both cannot be checked!
+        }
+
+        private void checkBoxDirecB13_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxDirecB12.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxBrakeB8_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxBrakeB9.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxBrakeB9_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxBrakeB8.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxSpeedB3_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSpeedB11.Checked = false;//Both cannot be checked.
+        }
+
+        private void checkBoxSpeedB11_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSpeedB3.Checked = false;//Both canot be checked.
         }
         
 

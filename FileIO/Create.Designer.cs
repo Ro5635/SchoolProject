@@ -336,6 +336,7 @@
             this.checkBoxSpeedB11.TabIndex = 9;
             this.checkBoxSpeedB11.Text = "11";
             this.checkBoxSpeedB11.UseVisualStyleBackColor = true;
+            this.checkBoxSpeedB11.CheckedChanged += new System.EventHandler(this.checkBoxSpeedB11_CheckedChanged);
             // 
             // checkBoxSpeedB3
             // 
@@ -346,6 +347,7 @@
             this.checkBoxSpeedB3.TabIndex = 8;
             this.checkBoxSpeedB3.Text = "3";
             this.checkBoxSpeedB3.UseVisualStyleBackColor = true;
+            this.checkBoxSpeedB3.CheckedChanged += new System.EventHandler(this.checkBoxSpeedB3_CheckedChanged);
             // 
             // checkBoxBrakeB9
             // 
@@ -356,6 +358,7 @@
             this.checkBoxBrakeB9.TabIndex = 7;
             this.checkBoxBrakeB9.Text = "9";
             this.checkBoxBrakeB9.UseVisualStyleBackColor = true;
+            this.checkBoxBrakeB9.CheckedChanged += new System.EventHandler(this.checkBoxBrakeB9_CheckedChanged);
             // 
             // checkBoxBrakeB8
             // 
@@ -366,6 +369,7 @@
             this.checkBoxBrakeB8.TabIndex = 6;
             this.checkBoxBrakeB8.Text = "8";
             this.checkBoxBrakeB8.UseVisualStyleBackColor = true;
+            this.checkBoxBrakeB8.CheckedChanged += new System.EventHandler(this.checkBoxBrakeB8_CheckedChanged);
             // 
             // checkBoxDirecB13
             // 
@@ -376,6 +380,7 @@
             this.checkBoxDirecB13.TabIndex = 5;
             this.checkBoxDirecB13.Text = "13";
             this.checkBoxDirecB13.UseVisualStyleBackColor = true;
+            this.checkBoxDirecB13.CheckedChanged += new System.EventHandler(this.checkBoxDirecB13_CheckedChanged);
             // 
             // label14
             // 
@@ -427,6 +432,7 @@
             this.checkBoxDirecB12.TabIndex = 0;
             this.checkBoxDirecB12.Text = "12";
             this.checkBoxDirecB12.UseVisualStyleBackColor = true;
+            this.checkBoxDirecB12.CheckedChanged += new System.EventHandler(this.checkBoxDirecB12_CheckedChanged);
             // 
             // PannelMotorA
             // 
