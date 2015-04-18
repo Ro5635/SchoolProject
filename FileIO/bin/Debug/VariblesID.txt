@@ -3,3 +3,9 @@
 3^ServoMic1^Boolean
 4^ServoMic2^Boolean
 5^ArduinoBorad^Int
+6^DirectControlAPIN^Int
+7^DirectControlBPIN^Int
+8^PWMControlAPIN^Int
+9^PWMControlBPIN^Int
+10^BrakeControlPINA^Int
+11^BrakeControlPINB^Int

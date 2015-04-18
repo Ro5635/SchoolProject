@@ -48,16 +48,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.PannelMotorA = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxDirecA12 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxDirecA13 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBrakeA9 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBrakeA8 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSpeedA11 = new System.Windows.Forms.CheckBox();
+            this.checkBoxSpeedA3 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonContinue = new System.Windows.Forms.Button();
             this.PannelNum1.SuspendLayout();
             this.PannelNum2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -246,7 +246,7 @@
             // PannelNum3
             // 
             this.PannelNum3.BackColor = System.Drawing.SystemColors.Window;
-            this.PannelNum3.Controls.Add(this.button1);
+            this.PannelNum3.Controls.Add(this.ButtonContinue);
             this.PannelNum3.Controls.Add(this.panel1);
             this.PannelNum3.Controls.Add(this.PannelMotorA);
             this.PannelNum3.Controls.Add(this.richTextBox2);
@@ -283,30 +283,30 @@
             this.PannelMotorA.Controls.Add(this.label10);
             this.PannelMotorA.Controls.Add(this.label9);
             this.PannelMotorA.Controls.Add(this.label8);
-            this.PannelMotorA.Controls.Add(this.checkBox5);
-            this.PannelMotorA.Controls.Add(this.checkBox6);
-            this.PannelMotorA.Controls.Add(this.checkBox3);
-            this.PannelMotorA.Controls.Add(this.checkBox4);
-            this.PannelMotorA.Controls.Add(this.checkBox2);
+            this.PannelMotorA.Controls.Add(this.checkBoxSpeedA11);
+            this.PannelMotorA.Controls.Add(this.checkBoxSpeedA3);
+            this.PannelMotorA.Controls.Add(this.checkBoxBrakeA9);
+            this.PannelMotorA.Controls.Add(this.checkBoxBrakeA8);
+            this.PannelMotorA.Controls.Add(this.checkBoxDirecA13);
             this.PannelMotorA.Controls.Add(this.label7);
             this.PannelMotorA.Controls.Add(this.label6);
             this.PannelMotorA.Controls.Add(this.label5);
             this.PannelMotorA.Controls.Add(this.label4);
-            this.PannelMotorA.Controls.Add(this.checkBox1);
+            this.PannelMotorA.Controls.Add(this.checkBoxDirecA12);
             this.PannelMotorA.Location = new System.Drawing.Point(71, 75);
             this.PannelMotorA.Name = "PannelMotorA";
             this.PannelMotorA.Size = new System.Drawing.Size(376, 384);
             this.PannelMotorA.TabIndex = 3;
             // 
-            // checkBox1
+            // checkBoxDirecA12
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(110, 147);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(38, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "12";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxDirecA12.AutoSize = true;
+            this.checkBoxDirecA12.Location = new System.Drawing.Point(110, 147);
+            this.checkBoxDirecA12.Name = "checkBoxDirecA12";
+            this.checkBoxDirecA12.Size = new System.Drawing.Size(38, 17);
+            this.checkBoxDirecA12.TabIndex = 0;
+            this.checkBoxDirecA12.Text = "12";
+            this.checkBoxDirecA12.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -350,55 +350,55 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Motor A";
             // 
-            // checkBox2
+            // checkBoxDirecA13
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(161, 147);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(38, 17);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "13";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxDirecA13.AutoSize = true;
+            this.checkBoxDirecA13.Location = new System.Drawing.Point(161, 147);
+            this.checkBoxDirecA13.Name = "checkBoxDirecA13";
+            this.checkBoxDirecA13.Size = new System.Drawing.Size(38, 17);
+            this.checkBoxDirecA13.TabIndex = 5;
+            this.checkBoxDirecA13.Text = "13";
+            this.checkBoxDirecA13.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkBoxBrakeA9
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(161, 233);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(32, 17);
-            this.checkBox3.TabIndex = 7;
-            this.checkBox3.Text = "9";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBoxBrakeA9.AutoSize = true;
+            this.checkBoxBrakeA9.Location = new System.Drawing.Point(161, 233);
+            this.checkBoxBrakeA9.Name = "checkBoxBrakeA9";
+            this.checkBoxBrakeA9.Size = new System.Drawing.Size(32, 17);
+            this.checkBoxBrakeA9.TabIndex = 7;
+            this.checkBoxBrakeA9.Text = "9";
+            this.checkBoxBrakeA9.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkBoxBrakeA8
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(110, 233);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(32, 17);
-            this.checkBox4.TabIndex = 6;
-            this.checkBox4.Text = "8";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBoxBrakeA8.AutoSize = true;
+            this.checkBoxBrakeA8.Location = new System.Drawing.Point(110, 233);
+            this.checkBoxBrakeA8.Name = "checkBoxBrakeA8";
+            this.checkBoxBrakeA8.Size = new System.Drawing.Size(32, 17);
+            this.checkBoxBrakeA8.TabIndex = 6;
+            this.checkBoxBrakeA8.Text = "8";
+            this.checkBoxBrakeA8.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // checkBoxSpeedA11
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(157, 331);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(38, 17);
-            this.checkBox5.TabIndex = 9;
-            this.checkBox5.Text = "11";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBoxSpeedA11.AutoSize = true;
+            this.checkBoxSpeedA11.Location = new System.Drawing.Point(157, 331);
+            this.checkBoxSpeedA11.Name = "checkBoxSpeedA11";
+            this.checkBoxSpeedA11.Size = new System.Drawing.Size(38, 17);
+            this.checkBoxSpeedA11.TabIndex = 9;
+            this.checkBoxSpeedA11.Text = "11";
+            this.checkBoxSpeedA11.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // checkBoxSpeedA3
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(106, 331);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(32, 17);
-            this.checkBox6.TabIndex = 8;
-            this.checkBox6.Text = "3";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBoxSpeedA3.AutoSize = true;
+            this.checkBoxSpeedA3.Location = new System.Drawing.Point(106, 331);
+            this.checkBoxSpeedA3.Name = "checkBoxSpeedA3";
+            this.checkBoxSpeedA3.Size = new System.Drawing.Size(32, 17);
+            this.checkBoxSpeedA3.TabIndex = 8;
+            this.checkBoxSpeedA3.Text = "3";
+            this.checkBoxSpeedA3.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -601,14 +601,15 @@
             this.label19.TabIndex = 14;
             this.label19.Text = "Please complete the bellow form for motor B\r\n";
             // 
-            // button1
+            // ButtonContinue
             // 
-            this.button1.Location = new System.Drawing.Point(401, 467);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 32);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Continue";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ButtonContinue.Location = new System.Drawing.Point(400, 465);
+            this.ButtonContinue.Name = "ButtonContinue";
+            this.ButtonContinue.Size = new System.Drawing.Size(97, 32);
+            this.ButtonContinue.TabIndex = 15;
+            this.ButtonContinue.Text = "Continue";
+            this.ButtonContinue.UseVisualStyleBackColor = true;
+            this.ButtonContinue.Click += new System.EventHandler(this.ButtonContinue_Click);
             // 
             // Create
             // 
@@ -659,15 +660,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel PannelMotorA;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxDirecA12;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBoxBrakeA9;
+        private System.Windows.Forms.CheckBox checkBoxBrakeA8;
+        private System.Windows.Forms.CheckBox checkBoxDirecA13;
+        private System.Windows.Forms.CheckBox checkBoxSpeedA11;
+        private System.Windows.Forms.CheckBox checkBoxSpeedA3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
@@ -687,6 +688,6 @@
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonContinue;
     }
 }

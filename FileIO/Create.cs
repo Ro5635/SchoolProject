@@ -171,7 +171,17 @@ namespace FileIO
 
         private void label6_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void ButtonContinue_Click(object sender, EventArgs e)
+        {
+            //Submit the form changes as apptopiate
+
+            //Compleate For A first:
+            
+           
+            
         }
 
     }
