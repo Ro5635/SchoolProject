@@ -79,6 +79,8 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.PannelNum4 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.PannelNum1.SuspendLayout();
             this.PannelNum2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -87,6 +89,7 @@
             this.PannelNum3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PannelMotorA.SuspendLayout();
+            this.PannelNum4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -626,10 +629,33 @@
             // 
             // PannelNum4
             // 
+            this.PannelNum4.BackColor = System.Drawing.SystemColors.Window;
+            this.PannelNum4.Controls.Add(this.richTextBox3);
+            this.PannelNum4.Controls.Add(this.label20);
             this.PannelNum4.Location = new System.Drawing.Point(32, 50);
             this.PannelNum4.Name = "PannelNum4";
-            this.PannelNum4.Size = new System.Drawing.Size(200, 100);
+            this.PannelNum4.Size = new System.Drawing.Size(669, 335);
             this.PannelNum4.TabIndex = 4;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(4, 4);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(157, 24);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Servo Selection";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Location = new System.Drawing.Point(21, 34);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(545, 46);
+            this.richTextBox3.TabIndex = 2;
+            this.richTextBox3.Text = "Please select the servos that you would wish to use:";
             // 
             // Create
             // 
@@ -656,6 +682,8 @@
             this.panel1.PerformLayout();
             this.PannelMotorA.ResumeLayout(false);
             this.PannelMotorA.PerformLayout();
+            this.PannelNum4.ResumeLayout(false);
+            this.PannelNum4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -711,5 +739,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button ButtonContinue;
         private System.Windows.Forms.Panel PannelNum4;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Label label20;
     }
 }

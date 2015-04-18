@@ -28,8 +28,10 @@ namespace FileIO
 
         private void Create_Load(object sender, EventArgs e)
         {
+            //Dont show the pannels that are not neccasary yet.
             PannelNum2.Visible = false;
             PannelNum3.Visible = false;
+            PannelNum4.Visible = false;
         }
 
         private void PannelNum2_VisibleChanged(object sender, EventArgs e)

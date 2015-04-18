@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="590336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileIO.exe" size="592384">
       <assemblyIdentity name="FileIO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ze0nflW5lcFoWHJyYCf5CT7ooHk1fjtl3ngym2z5RWY=</dsig:DigestValue>
+        <dsig:DigestValue>5ceCAhO7iAfzmFDRsA9mpPWqMQzyBOuwCaR/ntzNtJE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
