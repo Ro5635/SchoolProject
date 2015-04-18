@@ -386,13 +386,13 @@ namespace FileIO
             }
 
             WriteToFile("12^" + trackBarNumberOfLEDS.Value.ToString());//Write the num of LEDs selected to the file
-        }
-        
-         MessageBox.Show("You have now created your Arduino Robot Go to control mode to control it!");
-                Thread OpenThreadDevice = new Thread(OpenModeSelection);
-                OpenThreadDevice.SetApartmentState(ApartmentState.STA);
-                OpenThreadDevice.Start();
-                this.Close();
 
+
+            MessageBox.Show("You have now created your Arduino Robot Go to control mode to control it!");
+            Thread OpenThreadDevice2 = new Thread(OpenModeSelection);
+            OpenThreadDevice2.SetApartmentState(ApartmentState.STA);
+            OpenThreadDevice2.Start();
+            this.Close();
+        }
     }
 }
