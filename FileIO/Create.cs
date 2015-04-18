@@ -368,8 +368,31 @@ namespace FileIO
             //form that shows the current number of LEDs selected to the present count each time
             //the count is changed.
         }
-        
 
+        private void ButtonFinish_Click(object sender, EventArgs e)
+        {
+            //Save Final Pannel's changes
+            if (comboBoxNumServos.Text == "0")
+            {
+                //have a vacation; (Do nothing)
+            }
+            else if (comboBoxNumServos.Text == "1")
+            {
+                WriteToFile("3^1");//ServoMic1 Active
+            }
+            else if (comboBoxNumServos.Text == "2")
+            {
+                WriteToFile("4^1");//ServoMic2 Active as well.
+            }
+
+            WriteToFile("12^" + trackBarNumberOfLEDS.Value.ToString());//Write the num of LEDs selected to the file
+        }
+        
+         MessageBox.Show("You have now created your Arduino Robot Go to control mode to control it!");
+                Thread OpenThreadDevice = new Thread(OpenModeSelection);
+                OpenThreadDevice.SetApartmentState(ApartmentState.STA);
+                OpenThreadDevice.Start();
+                this.Close();
 
     }
 }

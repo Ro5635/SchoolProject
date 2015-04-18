@@ -86,6 +86,9 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.LEDCountLablel = new System.Windows.Forms.Label();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.ButtonFinish = new System.Windows.Forms.Button();
             this.PannelNum1.SuspendLayout();
             this.PannelNum2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -636,6 +639,9 @@
             // PannelNum4
             // 
             this.PannelNum4.BackColor = System.Drawing.SystemColors.Window;
+            this.PannelNum4.Controls.Add(this.ButtonFinish);
+            this.PannelNum4.Controls.Add(this.richTextBox5);
+            this.PannelNum4.Controls.Add(this.richTextBox4);
             this.PannelNum4.Controls.Add(this.LEDCountLablel);
             this.PannelNum4.Controls.Add(this.label22);
             this.PannelNum4.Controls.Add(this.label21);
@@ -678,10 +684,11 @@
             this.comboBoxNumServos.Name = "comboBoxNumServos";
             this.comboBoxNumServos.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNumServos.TabIndex = 3;
+            this.comboBoxNumServos.Text = "0";
             // 
             // trackBarNumberOfLEDS
             // 
-            this.trackBarNumberOfLEDS.Location = new System.Drawing.Point(625, 225);
+            this.trackBarNumberOfLEDS.Location = new System.Drawing.Point(625, 286);
             this.trackBarNumberOfLEDS.Maximum = 6;
             this.trackBarNumberOfLEDS.Name = "trackBarNumberOfLEDS";
             this.trackBarNumberOfLEDS.Size = new System.Drawing.Size(104, 45);
@@ -702,7 +709,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(594, 133);
+            this.label22.Location = new System.Drawing.Point(594, 131);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(157, 24);
             this.label22.TabIndex = 6;
@@ -712,11 +719,43 @@
             // 
             this.LEDCountLablel.AutoSize = true;
             this.LEDCountLablel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LEDCountLablel.Location = new System.Drawing.Point(666, 181);
+            this.LEDCountLablel.Location = new System.Drawing.Point(666, 242);
             this.LEDCountLablel.Name = "LEDCountLablel";
             this.LEDCountLablel.Size = new System.Drawing.Size(21, 24);
             this.LEDCountLablel.TabIndex = 7;
             this.LEDCountLablel.Text = "0";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox4.Location = new System.Drawing.Point(90, 147);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(236, 72);
+            this.richTextBox4.TabIndex = 8;
+            this.richTextBox4.Text = "Please select the number of servos that you wish to use on your \nrobot from the d" +
+    "rop down box bellow:";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox5.Location = new System.Drawing.Point(558, 167);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.Size = new System.Drawing.Size(236, 72);
+            this.richTextBox5.TabIndex = 9;
+            this.richTextBox5.Text = "Please select the number of LED\'s that you wish to use on your \nrobot from the dr" +
+    "op down box bellow:";
+            // 
+            // ButtonFinish
+            // 
+            this.ButtonFinish.Location = new System.Drawing.Point(390, 453);
+            this.ButtonFinish.Name = "ButtonFinish";
+            this.ButtonFinish.Size = new System.Drawing.Size(97, 32);
+            this.ButtonFinish.TabIndex = 17;
+            this.ButtonFinish.Text = "Continue";
+            this.ButtonFinish.UseVisualStyleBackColor = true;
+            this.ButtonFinish.Click += new System.EventHandler(this.ButtonFinish_Click);
             // 
             // Create
             // 
@@ -808,5 +847,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label LEDCountLablel;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.Button ButtonFinish;
     }
 }
