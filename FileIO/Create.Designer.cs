@@ -78,6 +78,7 @@
             this.checkBoxDirecA12 = new System.Windows.Forms.CheckBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.PannelNum4 = new System.Windows.Forms.Panel();
             this.PannelNum1.SuspendLayout();
             this.PannelNum2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -623,11 +624,19 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Arduino Motor Controler";
             // 
+            // PannelNum4
+            // 
+            this.PannelNum4.Location = new System.Drawing.Point(32, 50);
+            this.PannelNum4.Name = "PannelNum4";
+            this.PannelNum4.Size = new System.Drawing.Size(200, 100);
+            this.PannelNum4.TabIndex = 4;
+            // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 603);
+            this.Controls.Add(this.PannelNum4);
             this.Controls.Add(this.PannelNum3);
             this.Controls.Add(this.PannelNum2);
             this.Controls.Add(this.PannelNum1);
@@ -701,5 +710,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button ButtonContinue;
+        private System.Windows.Forms.Panel PannelNum4;
     }
 }

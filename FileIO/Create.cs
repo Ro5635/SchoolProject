@@ -276,12 +276,30 @@ namespace FileIO
 
             /////If in basic mode stop there, outher wise continue to next pannel.
 
-            if(){
+            if(Properties.Settings.Default.UserLevelSetting == 1){
+                //The user is in advanced mode
+                PannelNum4.Visible = true;
+                this.PannelNum4.Location = new System.Drawing.Point(0, 100);
+                this.PannelNum4.Size = new System.Drawing.Size(1010, 503);
+                PannelNum3.Visible = false;
 
+            }
+            else
+            {
+                //The user is in basic mode
+                MessageBox.Show("You have now created your Arduino Robot Go to control mode to control it!");
+                Thread OpenThreadDevice = new Thread(OpenModeSelection);
+                OpenThreadDevice.SetApartmentState(ApartmentState.STA);
+                OpenThreadDevice.Start();
+                this.Close();
             }
 
             }
-    
+
+        private void OpenModeSelection()
+        {
+            Application.Run(new TaskSelection());
+        }
         private void checkBoxDirecA12_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxDirecA13.Checked = false; //Both cannot be checked
