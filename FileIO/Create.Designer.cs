@@ -81,6 +81,11 @@
             this.PannelNum4 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.comboBoxNumServos = new System.Windows.Forms.ComboBox();
+            this.trackBarNumberOfLEDS = new System.Windows.Forms.TrackBar();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.LEDCountLablel = new System.Windows.Forms.Label();
             this.PannelNum1.SuspendLayout();
             this.PannelNum2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -90,6 +95,7 @@
             this.panel1.SuspendLayout();
             this.PannelMotorA.SuspendLayout();
             this.PannelNum4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarNumberOfLEDS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -630,11 +636,16 @@
             // PannelNum4
             // 
             this.PannelNum4.BackColor = System.Drawing.SystemColors.Window;
+            this.PannelNum4.Controls.Add(this.LEDCountLablel);
+            this.PannelNum4.Controls.Add(this.label22);
+            this.PannelNum4.Controls.Add(this.label21);
+            this.PannelNum4.Controls.Add(this.trackBarNumberOfLEDS);
+            this.PannelNum4.Controls.Add(this.comboBoxNumServos);
             this.PannelNum4.Controls.Add(this.richTextBox3);
             this.PannelNum4.Controls.Add(this.label20);
             this.PannelNum4.Location = new System.Drawing.Point(32, 50);
             this.PannelNum4.Name = "PannelNum4";
-            this.PannelNum4.Size = new System.Drawing.Size(669, 335);
+            this.PannelNum4.Size = new System.Drawing.Size(883, 515);
             this.PannelNum4.TabIndex = 4;
             // 
             // label20
@@ -643,9 +654,9 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(4, 4);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(157, 24);
+            this.label20.Size = new System.Drawing.Size(316, 24);
             this.label20.TabIndex = 1;
-            this.label20.Text = "Servo Selection";
+            this.label20.Text = "Additional Component Selection:";
             // 
             // richTextBox3
             // 
@@ -655,7 +666,57 @@
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(545, 46);
             this.richTextBox3.TabIndex = 2;
-            this.richTextBox3.Text = "Please select the servos that you would wish to use:";
+            this.richTextBox3.Text = "Please select the servos and LED\'s that you wish to use:";
+            // 
+            // comboBoxNumServos
+            // 
+            this.comboBoxNumServos.FormattingEnabled = true;
+            this.comboBoxNumServos.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBoxNumServos.Location = new System.Drawing.Point(129, 225);
+            this.comboBoxNumServos.Name = "comboBoxNumServos";
+            this.comboBoxNumServos.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNumServos.TabIndex = 3;
+            // 
+            // trackBarNumberOfLEDS
+            // 
+            this.trackBarNumberOfLEDS.Location = new System.Drawing.Point(625, 225);
+            this.trackBarNumberOfLEDS.Maximum = 6;
+            this.trackBarNumberOfLEDS.Name = "trackBarNumberOfLEDS";
+            this.trackBarNumberOfLEDS.Size = new System.Drawing.Size(104, 45);
+            this.trackBarNumberOfLEDS.TabIndex = 4;
+            this.trackBarNumberOfLEDS.Scroll += new System.EventHandler(this.trackBarNumberOfLEDS_Scroll);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(116, 120);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(157, 24);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Servo Selection";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(594, 133);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(157, 24);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "LED\'s Selection";
+            // 
+            // LEDCountLablel
+            // 
+            this.LEDCountLablel.AutoSize = true;
+            this.LEDCountLablel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDCountLablel.Location = new System.Drawing.Point(666, 181);
+            this.LEDCountLablel.Name = "LEDCountLablel";
+            this.LEDCountLablel.Size = new System.Drawing.Size(21, 24);
+            this.LEDCountLablel.TabIndex = 7;
+            this.LEDCountLablel.Text = "0";
             // 
             // Create
             // 
@@ -684,6 +745,7 @@
             this.PannelMotorA.PerformLayout();
             this.PannelNum4.ResumeLayout(false);
             this.PannelNum4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarNumberOfLEDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,5 +803,10 @@
         private System.Windows.Forms.Panel PannelNum4;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TrackBar trackBarNumberOfLEDS;
+        private System.Windows.Forms.ComboBox comboBoxNumServos;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label LEDCountLablel;
     }
 }

@@ -361,6 +361,13 @@ namespace FileIO
         {
             checkBoxSpeedB3.Checked = false;//Both canot be checked.
         }
+
+        private void trackBarNumberOfLEDS_Scroll(object sender, EventArgs e)
+        {
+            LEDCountLablel.Text = trackBarNumberOfLEDS.Value.ToString();//This updates the lablel on the 
+            //form that shows the current number of LEDs selected to the present count each time
+            //the count is changed.
+        }
         
 
 
