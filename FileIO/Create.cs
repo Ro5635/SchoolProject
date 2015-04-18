@@ -169,5 +169,10 @@ namespace FileIO
             PannelNum2.Visible = false;
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
