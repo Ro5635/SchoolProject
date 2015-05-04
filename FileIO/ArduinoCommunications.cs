@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileIO
 {
-    class ArduinoCommunications
+    class ArduinoCommunications : SerialConnectionControl
     {
         /*
          *This class holds all of the Variables that are being sent to and from the remote devices, the data is held in tables (multi dimension array), there are 3 columns ID Data and Update. 

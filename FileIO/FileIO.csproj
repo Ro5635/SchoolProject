@@ -160,6 +160,7 @@
     <EmbeddedResource Include="TestForm2.resx">
       <DependentUpon>TestForm2.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="FileIO_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

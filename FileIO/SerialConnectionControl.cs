@@ -10,7 +10,7 @@ namespace FileIO
      * This is the Serial Communication Control class, it uses the SerialControl Class to handle the reading and writing of the data.
      * */
 
-    class SerialConnectionControl
+    class SerialConnectionControl : SerialControl
     {
         SerialControl SerialDataHandle = new SerialControl();
         GlobalVar GlobalsAccessHandle = new GlobalVar();
